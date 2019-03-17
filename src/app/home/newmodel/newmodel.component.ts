@@ -21,9 +21,7 @@ export class NewmodelComponent implements OnInit {
     this.isLoading = true;
     this.itemsProvider.getItemsList()
       .subscribe(itemsList => {
-        // console.log('item is : component', itemsList);
         this.itemsList = itemsList['newModelItems'];
-        // console.log(`this.itemsList: ${JSON.stringify(this.itemsList)}`);
         this.isLoading = false;
       }, err => {
         this.isLoading = false;

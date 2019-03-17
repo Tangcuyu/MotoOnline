@@ -13,7 +13,7 @@
       <div class="col-md-4" *ngFor="let item of itemsList; let i=index">
         <div class="card card-product card-plain">
           <div class="card-header card-header-image">
-            <a mat-flat-button routerLink="/product-detail">
+            <a mat-flat-button [routerLink]="['/product-detail', item.itemId]">
               <img src="{{item.image}}">
             </a>
           </div>

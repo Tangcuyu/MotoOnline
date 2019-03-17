@@ -20,7 +20,7 @@ const routes: Routes = [
     data: {backimg: '../../assets/img/moto/bj-2.jpeg'}
   },
   {
-    path: 'product-detail',
+    path: 'product-detail/:id',
     component: ProductDetailComponent,
     data: {backimg: '../../assets/img/moto/bj-3.jpeg'}
   },

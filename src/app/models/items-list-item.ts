@@ -1,4 +1,5 @@
 export class ItemsListItem {
+  itemId: number;
   cost: number;
   image: string;
   label: string;
@@ -12,6 +13,7 @@ export class ItemsListItem {
   favourite?: boolean;
   constructor(inputObj) {
     if (inputObj) {
+      this.itemId = Number(inputObj.itemId);
       this.cost = Number(inputObj.cost);
       this.image = inputObj.image;
       this.label = inputObj.label;
