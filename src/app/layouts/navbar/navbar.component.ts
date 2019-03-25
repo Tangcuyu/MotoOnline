@@ -22,7 +22,7 @@ interface IMenuItem {
 
 @Injectable()
 export class NavbarComponent {
-  @Output() 
+  @Output()
   notify: EventEmitter<string>
         = new EventEmitter<string>();
   menuItems: IMenuItem[];
