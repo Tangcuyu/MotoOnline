@@ -24,9 +24,9 @@ export interface INotifyConifg {
 
 export class AppConst {
     public static readonly STORE_API_PATHS = {
-        getMenuItems: '/apiMenuitems',
-        getItems: '/apiNewModelItems',
-        itemDescription: '/apiNewModelItems/{{id}}',
+        getMenuItems: '/api/menuitems',
+        getItems: '/api/newModelItems',
+        itemDescription: '/api/newModelItems/{{id}}',
         buyItems: '/people',
         verfiyVoucher: '/people'
     };
