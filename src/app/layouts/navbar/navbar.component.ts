@@ -35,11 +35,11 @@ export class NavbarComponent {
      .subscribe(
       (data) => {
          // console.log(`got : ${data['menuItems'][0].buttonName}`);
-         this.menuItems = data['menuItems'];
+         this.menuItems = data;
          // console.log(`got : ${this.menuItems[0].buttonName}`);
       },
       err => {
-        console.log(`error : ${err}`);
+        console.log(`error : ${err.message}`);
       },
       () => {
         console.log(`success`);

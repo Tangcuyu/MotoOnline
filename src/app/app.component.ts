@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { BoardState } from './core/board.model';
-import * as boardAction from './core/board.actions';
 
 
 @Component({

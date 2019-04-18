@@ -14,19 +14,15 @@ import { AppRoutingModule } from './app.routing';
 
 // Container Components
 import { CheckoutCartComponent } from './containers/checkout-cart/checkout-cart.component';
+import { ProductDetailComponent } from './containers/product-detail/product-detail.component';
 
 // Dumb Components
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './layouts/navbar/navbar.component';
 
+import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { LoginComponent } from './login/login.component';
-
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { ProductDetailComponent } from './containers/product-detail/product-detail.component';
-
-
-
 
 
 @NgModule({

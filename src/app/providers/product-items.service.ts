@@ -36,8 +36,6 @@ export class ProductItemsService {
   //
   getItem(id: string): Observable<ItemDescription> {
     const itemDecUrl: string =  this.storeApiPath +  AppConst.STORE_API_PATHS.itemDescription.replace('{{id}}', id);
-    console.log(itemDecUrl);
-    return this.apiProvider.httpGet<ItemDescription>(itemDecUrl)
-      .pipe();
+    return this.apiProvider.httpGet<ItemDescription>(itemDecUrl);
   }
 }

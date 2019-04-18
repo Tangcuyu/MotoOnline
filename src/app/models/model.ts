@@ -31,7 +31,7 @@ export class AppConst {
         verfiyVoucher: '/people'
     };
 
-    public static readonly DEFAULT_CURRENCY_SYMBOL = '£';
+    public static readonly DEFAULT_CURRENCY_SYMBOL = '￥';
 
     public static readonly VOUCHER_CODES = {
         OFF5: '5OFF',

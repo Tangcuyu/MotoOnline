@@ -1,101 +1,38 @@
 <app-header></app-header>
+<ng-container *ngIf="loading">
+  <app-loading-spinner>
+    Loading the product... Please wait.
+  </app-loading-spinner>
+</ng-container>
+<ng-container *ngIf="isError">
+  <app-network-error-component></app-network-error-component>
+</ng-container>
 <div class="container product-page sidebar-collapse" style="background-color: rgba(0,0,0,0);">
-  <div class="main main-raised main-product" *ngIf="item$ | async as item">
-    <h3>{{item | json}}</h3>
+  <div class="main main-raised main-product" *ngIf="!loading">
     <div class="row">
       <div class="col-md-6 col-sm-6">
-        <div class="tab-content">
-          <div class="tab-pane active" id="product-page1">
-            <img src="../../assets/img/moto/street750/product-1.jpg">
-          </div>
-          <div class="tab-pane" id="product-page2">
-            <img src="../../assets/img/moto/street750/product-2.jpg">
-          </div>
-          <div class="tab-pane" id="product-page3">
-            <img src="../../assets/img/moto/street750/product-3.jpg">
-          </div>
-          <div class="tab-pane" id="product-page4">
-            <img src="../../assets/img/moto/street750/product-4.jpg">
+        <div  class="tab-content">
+          <div *ngFor="let image of item.images; let i=index" class="tab-pane" [class.active]="i===0" id= "{{image.public_id}}">
+            <img src= "{{image.url}}">
           </div>
         </div>
-        <div class="nbs-flexisel-container">
-          <div class="nbs-flexisel-inner">
-            <ul class="nav flexi-nav nbs-flexisel-ul" data-tabs="tabs" id="flexiselDemo1" style="left: -750px;">
-              <li class="nav-item nbs-flexisel-item" style="width: 125px;">
-                <a href="#product-page1" class="nav-link" data-toggle="tab">
-                  <img src="../../assets/img/moto/street750/product-1.jpg">
-                </a>
-              </li>
-              <li class="nav-item nbs-flexisel-item" style="width: 125px;">
-                <a href="#product-page2" class="nav-link" data-toggle="tab">
-                  <img src="../../assets/img/moto/street750/product-2.jpg">
-                </a>
-              </li>
-              <li class="nav-item nbs-flexisel-item" style="width: 125px;">
-                <a href="#product-page3" class="nav-link" data-toggle="tab">
-                  <img src="../../assets/img/moto/street750/product-3.jpg">
-                </a>
-              </li>
-              <li class="nav-item nbs-flexisel-item" style="width: 125px;">
-                <a href="#product-page4" class="nav-link" data-toggle="tab">
-                  <img src="../../assets/img/moto/street750/product-4.jpg">
-                </a>
-              </li>
-              <li class="nav-item nbs-flexisel-item" style="width: 125px;">
-                <a href="#product-page1" class="nav-link" data-toggle="tab">
-                  <img src="../../assets/img/moto/street750/product-1.jpg">
-                </a>
-              </li>
-              <li class="nav-item nbs-flexisel-item" style="width: 125px;">
-                <a href="#product-page2" class="nav-link" data-toggle="tab">
-                  <img src="../../assets/img/moto/street750/product-2.jpg">
-                </a>
-              </li>
-              <li class="nav-item nbs-flexisel-item" style="width: 125px;">
-                <a href="#product-page3" class="nav-link" data-toggle="tab">
-                  <img src="../../assets/img/moto/street750/product-3.jpg">
-                </a>
-              </li>
-              <li class="nav-item nbs-flexisel-item" style="width: 125px;">
-                <a href="#product-page4" class="nav-link" data-toggle="tab">
-                  <img src="../../assets/img/moto/street750/product-4.jpg">
-                </a>
-              </li>
-              <li class="nav-item nbs-flexisel-item" style="width: 125px;">
-                <a href="#product-page1" class="nav-link" data-toggle="tab">
-                  <img src="../../assets/img/moto/street750/product-1.jpg">
-                </a>
-              </li>
-              <li class="nav-item nbs-flexisel-item" style="width: 125px;">
-                <a href="#product-page2" class="nav-link" data-toggle="tab">
-                  <img src="../../assets/img/moto/street750/product-2.jpg">
-                </a>
-              </li>
-              <li class="nav-item nbs-flexisel-item" style="width: 125px;">
-                <a href="#product-page3" class="nav-link" data-toggle="tab">
-                  <img src="../../assets/img/moto/street750/product-3.jpg">
-                </a>
-              </li>
-              <li class="nav-item nbs-flexisel-item" style="width: 125px;">
-                <a href="#product-page4" class="nav-link" data-toggle="tab">
-                  <img src="../../assets/img/moto/street750/product-4.jpg">
-                </a>
-              </li>
-            </ul>
-            <div class="nbs-flexisel-nav-left"><i class="material-icons">chevron_left</i></div>
-            <div class="nbs-flexisel-nav-right"><i class="material-icons">chevron_right</i></div>
-          </div>
-        </div>
+        <ul class="nav flexi-nav" data-tabs="tabs" id="flexiselDemo1">
+            <li *ngFor="let image of item.images" class="nav-item" style="width: 125px;">
+              <a href="#{{image.public_id}}" class="nav-link" data-toggle="tab">
+                <img src="{{image.url}}">
+              </a>
+            </li>
+        </ul>
       </div>
       <div class="col-md-6 col-sm-6">
-        <h2 class="title"> Street™ 750 </h2>
-        <h3 class="main-price">$335</h3>
+        <h2 class="title"> {{item.title}} </h2>
+        <h3 class="main-price">{{item.selling_price | currency:'CNY':'symbol-narrow'}}</h3>
         <div id="accordion" role="tablist">
           <div class="card card-collapse">
             <div class="card-header" role="tab" id="headingOne">
               <h5 class="mb-0">
                 <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Description
+                  产品描述：
                   <i class="material-icons">keyboard_arrow_down</i>
                 </a>
               </h5>
@@ -103,9 +40,7 @@
             <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne"
               data-parent="#accordion">
               <div class="card-body">
-                <p>Eres' daring 'Grigri Fortune' swimsuit has the fit and coverage of a bikini in a one-piece silhouette.
-                  This fuchsia style is crafted from the label's sculpting peau douce fabric and has flattering cutouts
-                  through the torso and back. Wear yours with mirrored sunglasses on vacation.</p>
+                <p>{{item.productBrief}}</p>
               </div>
             </div>
           </div>
@@ -114,17 +49,14 @@
               <h5 class="mb-0">
                 <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
                   aria-controls="collapseTwo">
-                  Designer Information
+                  设计师推荐：
                   <i class="material-icons">keyboard_arrow_down</i>
                 </a>
               </h5>
             </div>
             <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
               <div class="card-body">
-                An infusion of West Coast cool and New York attitude, Rebecca Minkoff is synonymous with It girl style.
-                Minkoff burst on the fashion scene with her best-selling 'Morning After Bag' and later expanded her
-                offering with the Rebecca Minkoff Collection - a range of luxe city staples with a "downtown romantic"
-                theme.
+                {{item.productDetail}}
               </div>
             </div>
           </div>
@@ -133,7 +65,7 @@
               <h5 class="mb-0">
                 <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false"
                   aria-controls="collapseThree">
-                  Details and Care
+                  性能参数：
                   <i class="material-icons">keyboard_arrow_down</i>
                 </a>
               </h5>
@@ -142,11 +74,10 @@
               data-parent="#accordion">
               <div class="card-body">
                 <ul>
-                  <li>Storm and midnight-blue stretch cotton-blend</li>
-                  <li>Notch lapels, functioning buttoned cuffs, two front flap pockets, single vent, internal pocket</li>
-                  <li>Two button fastening</li>
-                  <li>84% cotton, 14% nylon, 2% elastane</li>
-                  <li>Dry clean</li>
+                  <li>重量：{{item.weight}}KG</li>
+                  <li>长度：{{item.length}}CM</li>
+                  <li>宽度：{{item.width}}CM</li>
+                  <li>高度：{{item.height}}CM</li>
                 </ul>
               </div>
             </div>
@@ -154,10 +85,10 @@
         </div>
         <div class="row pick-size">
           <div class="col-md-6 col-sm-6">
-            <label>Select color</label>
+            <label>颜色选择</label>
             <div class="btn-group bootstrap-select"><button type="button"
                 class="btn dropdown-toggle select-with-transition" data-toggle="dropdown" role="button"
-                aria-labelledby="undefined" title="Rose"><span class="filter-option pull-left">Rose </span>&nbsp;<span
+                aria-labelledby="undefined" title="Rose"><span class="filter-option pull-left">{{item.color}} </span>&nbsp;<span
                   class="bs-caret"><span class="caret"></span></span></button>
               <div class="dropdown-menu open" role="combobox">
                 <ul class="dropdown-menu inner" role="listbox" aria-expanded="false">
@@ -171,18 +102,14 @@
                       aria-disabled="false" aria-selected="false"><span class="text">White</span><span
                         class="material-icons  check-mark"> done </span></a></li>
                 </ul>
-              </div><select class="" data-style="select-with-transition" data-size="7" tabindex="-98">
-                <option value="1">Rose </option>
-                <option value="2">Gray</option>
-                <option value="3">White</option>
-              </select>
+              </div>
             </div>
           </div>
           <div class="col-md-6 col-sm-6">
-            <label>Select size</label>
+            <label>排量选择</label>
             <div class="btn-group bootstrap-select"><button type="button"
                 class="btn dropdown-toggle select-with-transition" data-toggle="dropdown" role="button"
-                aria-labelledby="undefined" title="Small"><span class="filter-option pull-left">Small </span>&nbsp;<span
+                aria-labelledby="undefined" title="Small"><span class="filter-option pull-left">{{item.output}}CC </span>&nbsp;<span
                   class="bs-caret"><span class="caret"></span></span></button>
               <div class="dropdown-menu open" role="combobox">
                 <ul class="dropdown-menu inner" role="listbox" aria-expanded="false">
@@ -196,16 +123,12 @@
                       aria-disabled="false" aria-selected="false"><span class="text">Large</span><span
                         class="material-icons  check-mark"> done </span></a></li>
                 </ul>
-              </div><select class="" data-style="select-with-transition" data-size="7" tabindex="-98">
-                <option value="1">Small </option>
-                <option value="2">Medium</option>
-                <option value="3">Large</option>
-              </select>
+              </div>
             </div>
           </div>
         </div>
         <div class="row pull-right">
-          <button class="btn btn-rose btn-round">Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
+          <button class="btn btn-rose btn-round">加入购物车 &nbsp;<i class="material-icons">shopping_cart</i></button>
         </div>
       </div>
     </div>

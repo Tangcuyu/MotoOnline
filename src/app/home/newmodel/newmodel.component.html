@@ -13,25 +13,25 @@
       <div class="col-md-4" *ngFor="let item of itemsList; let i=index">
         <div class="card card-product card-plain">
           <div class="card-header card-header-image">
-            <a mat-flat-button [routerLink]="['/product-detail', item.itemId]">
-              <img src="{{item.image}}">
+            <a mat-flat-button [routerLink]="['/product-detail', item._id]">
+              <img src="{{item.image.url}}">
             </a>
           </div>
           <div class="card-body text-center">
             <h4 class="card-title">
-              <a routerLink="/product-detail">{{item.label}}</a>
+              <a routerLink="/product-detail">{{item.title}}</a>
             </h4>
-            <p class="card-description">{{item.productBrief}}</p>
+            <div class="card-description" [innerHTML]="item.productBrief"></div>
           </div>
           <div class="card-footer">
             <div class="price-container">
-              <span class="price price-old"> ￥{{item.cost}}</span>
-              <span class="price price-new"> ￥{{item.afterDiscount}}</span>
+              <span class="price price-old"> {{item.display_price | currency:'CNY':'symbol-narrow'}}</span>
+              <span class="price price-new"> {{item.selling_price | currency:'CNY':'symbol-narrow'}}</span>
             </div>
             <div class="stats ml-auto">
               <button type="button" rel="tooltip" title="" class="btn btn-just-icon btn-link btn-rose"
                 data-original-title="Saved to Wishlist">
-                <i class="material-icons">{{item.favourite?'favorite':'favorite_border'}}</i>
+                <i class="material-icons">{{item.is_favorited_by_current_user?'favorite':'favorite_border'}}</i>
               </button>
             </div>
           </div>

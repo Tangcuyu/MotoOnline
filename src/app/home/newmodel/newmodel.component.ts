@@ -21,7 +21,7 @@ export class NewmodelComponent implements OnInit {
     this.isLoading = true;
     this.itemsProvider.getItemsList()
       .subscribe(itemsList => {
-        this.itemsList = itemsList['newModelItems'];
+        this.itemsList = itemsList;
         this.isLoading = false;
       }, err => {
         this.isLoading = false;
