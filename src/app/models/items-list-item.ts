@@ -1,3 +1,5 @@
+/* 商品列表类型定义 */
+
 export class ItemsListItem {
   id: string;
   display_price: number;
