@@ -14,10 +14,13 @@ import { Cart,CartItem } from '../models/cart';
   providedIn: 'root'
 })
 export class CartService {
-  private cart: any = {};
+  private cart: any = {
+    totalPrice: 0,   // 购物车总价
+    totalItems: 0,
+  };
   private cartItems: any = {};
   private priceAfterDiscount: number = 0;
-  private totalPrice: number = 0;
+  private totalPrice: number = 0; // 订单项价格
   private totalItems: number = 0;
   private storeApiPath: string = environment.storeApiPath;
   private voucherApplied: boolean = false;
@@ -124,9 +127,9 @@ export class CartService {
       if (this.cartItems[id].total_on_hand > 0) {
         this.cartItems[id].total_on_hand = this.cartItems[id].total_on_hand - 1;
         this.cartItems[id].count = this.cartItems[id].count + 1;
-        this.totalPrice = this.totalPrice + item.price;
+        this.totalPrice = this.cart.totalPrice + item.selling_price;
         this.updateDiscountedPrice();
-        this.totalItems += 1;
+        this.cart.totalItems += 1;
       }
     } else {
       if (item.total_on_hand > 0) {
@@ -134,15 +137,13 @@ export class CartService {
         this.cartItems[id].max_items = this.cartItems[id].total_on_hand;
         this.cartItems[id].total_on_hand = this.cartItems[id].total_on_hand - 1;
         this.cartItems[id].count = 1;
-        this.totalPrice = this.totalPrice + item.price;
+        this.totalPrice = this.cart.totalPrice + item.selling_price;
         this.updateDiscountedPrice();
-        this.totalItems += 1;
+        this.cart.totalItems += 1;
       }
     }
-    this.cart.cartItems = this.cartItems; 
     this.cart.totalPrice = this.totalPrice;
-    this.cart.totalItems = this.totalItems;
-    this.cart.priceAfterDiscount = this.priceAfterDiscount;
+    this.cart.cartItems = this.cartItems; 
     localStorage.setItem('cart', JSON.stringify(this.cart));    
   }
 
@@ -172,7 +173,26 @@ export class CartService {
   }
 
   public getTotalPrice(): number {    
-    return Number(this.totalPrice.toFixed(2));
+    if (localStorage.getItem('cart')) {
+      this.cart = JSON.parse(localStorage.getItem('cart'));
+      if (this.cart.totalPrice !== undefined && this.cart.totalPrice !== null) {
+        // console.log(this.cart.totalPrice)
+        return Number(this.cart.totalPrice.toFixed(2));
+      }
+    }
+  }
+
+  public getTotalItems(): number {    
+    if (localStorage.getItem('cart')) {
+      this.cart = JSON.parse(localStorage.getItem('cart'));
+      if (this.cart.totalItems !== undefined && this.cart.totalItems !== null) {
+        this.totalItems = this.cart.totalItems;
+        console.log(this.totalItems);
+        return Number(this.cart.totalItems);
+      }
+    } else {
+      return this.cart.totalItems = 0;
+    }
   }
 
   public getPriceAfterDiscount(): number {
@@ -182,15 +202,15 @@ export class CartService {
   public removeItem(ref: string) {
     if (localStorage.getItem('cart')) {
       this.cart = JSON.parse(localStorage.getItem('cart'));
+      this.cartItems = this.cart.cartItems;
     }
     if (this.cartItems[ref]) {
       const tempObj = this.cartItems[ref];
-      this.totalPrice = this.totalPrice - (tempObj.count * tempObj.cost);
+      this.cart.totalPrice = this.cart.totalPrice - (tempObj.count * tempObj.selling_price);
       this.updateDiscountedPrice();
-      this.totalItems = this.totalItems - (tempObj.count);
+      this.cart.totalItems = this.cart.totalItems - (tempObj.count);
       this.cartItems[ref] = null;
       delete this.cartItems[ref];
-      this.cart.cartItems = this.cartItems
     }
     localStorage.setItem('cart', JSON.stringify(this.cart));     
   }
@@ -219,12 +239,12 @@ export class CartService {
 
   public removeAllItemsFromCart() {
     this.cartItems = {};
+    this.cart.totalPrice = 0;
     this.totalPrice = 0;
     this.priceAfterDiscount = 0;
-    this.totalItems = 0;
+    this.cart.totalItems = 0;
     this.voucherApplied = false;
     this.currentVoucher = '';
-    this.cart = {};
     localStorage.removeItem('cart');
   }
 

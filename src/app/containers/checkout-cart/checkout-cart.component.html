@@ -7,7 +7,9 @@
                 <h3 class="card-title">购物车</h3>
             </div>
             <div class="col-sm-1 offset-8" style="padding-top: 5px;">
-                <button class="btn btn-outline-danger btn-round btn-sm" color="primary" [disabled]="!cartItems.length"  (click)="handleEmptyCart()">清空购物车</button>
+                <button class="btn btn-outline-danger btn-round btn-sm" color="primary" [disabled]="!cartItems.length"  (click)="handleEmptyCart()">
+                    <span>清空购物车 <i class="material-icons">error_outline</i></span>
+                </button>
             </div>
       </div>
       <div class="card-body">
@@ -56,7 +58,7 @@
                     <td class="td-number text-right">
                       {{item.selling_price | currency:'CNY':'symbol-narrow'}}
                     </td>
-                    <td class="td-number">
+                    <td class="td-number text-right">
                       {{item.count}}
                       <div class="btn-group btn-group-sm">
                         <button class="btn btn-round btn-info"> <i class="material-icons">remove</i> </button>
@@ -74,17 +76,19 @@
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="3"></td>
+                    <td colspan="3">
+                      <a [routerLink]="['/home']" class="btn btn-success mat-raised-button">继续购物</a>
+                    </td>
                     <td class="td-total">
                       总计：
                     </td>
                     <td colspan="1" class="td-price">
                       {{totalPrice | currency:'CNY':'symbol-narrow'}}
                     </td>
-                    <td colspan="1"></td>
+                    <td colspan="1">
+                    </td>
                     <td colspan="2" class="text-right">
-                      <button type="button" class="btn btn-info btn-round">立即支付 <i
-                          class="material-icons">keyboard_arrow_right</i></button>
+                      <button type="button" class="btn btn-info btn-round mat-raised-button"><span class="mat-button-wrapper">立即支付 <i class="material-icons">keyboard_arrow_right</i></span> </button>
                     </td>
                   </tr>
                   <!-- <tr>

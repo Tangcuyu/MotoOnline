@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
@@ -17,6 +17,10 @@ declare var $: any;
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
+  @Output()
+  additem: EventEmitter<number>
+        = new EventEmitter<number>();
+  
   public currencySymbol = AppConst.DEFAULT_CURRENCY_SYMBOL;
   public loading = false;
   public isError = false;
@@ -73,7 +77,8 @@ export class ProductDetailComponent implements OnInit {
 
   handleAddtoCartClick(item: ItemDescription) {
     this.cartService.addItemToCart(item);
-    this.snackBar.open('商品添加成功','', {
+    this.additem.emit(7);
+    this.snackBar.open('商品添加成功','关闭', {
       duration: 2000
     });
   }

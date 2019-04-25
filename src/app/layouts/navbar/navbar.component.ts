@@ -1,7 +1,8 @@
-import { Component, Injectable, EventEmitter, Output } from '@angular/core';
+import { Component, Injectable, EventEmitter, Output, OnChanges, Input, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { AppConst } from '../../models/model';
 import { environment } from '../../../environments/environment';
+import { CartService } from '../../providers/cart.service';
 
 interface ISubItem {
   subItemName: string;
@@ -21,15 +22,16 @@ interface IMenuItem {
 
 
 @Injectable()
-export class NavbarComponent {
+export class NavbarComponent implements OnInit, OnChanges {
   @Output()
   notify: EventEmitter<string>
         = new EventEmitter<string>();
   menuItems: IMenuItem[];
+  @Input() items: number = 0;
   // 获取环境配置文件中的参数：后台API路径
   private storeApiPath: string = environment.storeApiPath;
 
- constructor (private http: HttpClient) {
+ constructor (private http: HttpClient, private cartService: CartService) {
     // console.log('AppComponent constructor');
    this.http.get<any>(this.storeApiPath + AppConst.STORE_API_PATHS.getMenuItems)
      .subscribe(
@@ -45,6 +47,16 @@ export class NavbarComponent {
         // console.log(`success`);
       }
     );
+  }
+
+  ngOnInit() {
+    
+  }
+  ngOnChanges() {
+  }
+
+  updateItems() {
+    this.items = this.cartService.getTotalItems();
   }
 
   navClicked(item: IMenuItem) {

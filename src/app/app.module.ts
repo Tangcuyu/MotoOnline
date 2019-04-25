@@ -31,7 +31,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     FooterComponent,
     PagenotfoundComponent,
     CheckoutCartComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,

@@ -53,7 +53,6 @@ export class CheckoutCartComponent implements OnInit {
   }
 
   handleRemoveItem(ref: string) {
-    console.log(ref);
     this.cartService.removeItem(ref);
     this.updateCartItemsFromProvider();
     this.updatePriceFromProvider();
