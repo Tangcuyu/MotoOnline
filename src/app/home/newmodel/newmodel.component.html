@@ -19,7 +19,7 @@
           </div>
           <div class="card-body text-center">
             <h4 class="card-title">
-              <a routerLink="/product-detail">{{item.title}}</a>
+              <a [routerLink]="['/product-detail', item._id]">{{item.title}}</a>
             </h4>
             <div class="card-description" [innerHTML]="item.productBrief"></div>
           </div>

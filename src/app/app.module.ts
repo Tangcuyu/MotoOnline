@@ -3,8 +3,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { StoreModule } from '@ngrx/store';
-import { boardStateReducer } from './core/board.reducer';
 
 // Modules
 import { MaterialModule} from './material/material.module';
@@ -43,7 +41,6 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     FormsModule,
     MaterialModule,
     HomeModule,
-    StoreModule.forRoot({board: boardStateReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]

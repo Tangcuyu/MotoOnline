@@ -9,9 +9,11 @@ export class ItemDescription {
     width: number;
     depth: number;
     output: number;
+    color: string[];
     slug: string;
     image: string;
     images: string[];
+    thumbnail: string;
     productBrief: string;
     productDetail: string;
     track_inventory: boolean;
@@ -21,7 +23,7 @@ export class ItemDescription {
     priceAfterDiscount: number; // 经过优惠后的价格
     selling_price: number; // 经过调整后的，最终成交价格
     option_values: string[];
-    total_on_hand: number;
+    total_on_hand: number; //现货数量
     options_text: string;
     in_stock: boolean;
     is_backorderable: boolean;
@@ -38,9 +40,11 @@ export class ItemDescription {
       this.width = inputObj.width;
       this.depth = inputObj.depth;
       this.output = inputObj.output;
+      this.color = inputObj.color;
       this.slug = inputObj.slug;
       this.image = inputObj.image;
       this.images = inputObj.images;
+      this.thumbnail = inputObj.thumbnail;
       this.track_inventory = inputObj.track_inventory;
       this.productBrief = inputObj.productBrief;
       this.productDetail = inputObj.productDetail;

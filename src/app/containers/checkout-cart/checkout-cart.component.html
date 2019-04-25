@@ -2,158 +2,115 @@
 <div class="main main-raised">
   <div class="container">
     <div class="card card-plain">
+      <div class="card-title row">
+            <div class="col-sm-2">
+                <h3 class="card-title">购物车</h3>
+            </div>
+            <div class="col-sm-1 offset-8" style="padding-top: 5px;">
+                <button class="btn btn-outline-danger btn-round btn-sm" color="primary" [disabled]="!cartItems.length"  (click)="handleEmptyCart()">清空购物车</button>
+            </div>
+      </div>
       <div class="card-body">
-        <h3 class="card-title">购物车</h3>
-        <br>
-        <div class="table-responsive">
-          <table class="table table-shopping">
-            <thead>
-              <tr>
-                <th class="text-center"></th>
-                <th>产品</th>
-                <th class="th-description">颜色</th>
-                <th class="th-description">排量</th>
-                <th class="text-right">价格</th>
-                <th class="text-right">数量</th>
-                <th class="text-right">合计</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <div class="img-container">
-                    <img src="../../../assets/img/moto/chartlist/timg1.jpg" alt="...">
-                  </div>
-                </td>
-                <td class="td-name">
-                  <a href="#jacket">Roadster™</a>
-                  <br>
-                  <small>哈雷&amp;戴维森</small>
-                </td>
-                <td>
-                  魅惑红
-                </td>
-                <td>
-                  1200CC
-                </td>
-                <td class="td-number text-right">
-                  <small>￥</small>179,900.00
-                </td>
-                <td class="td-number">
-                  1
-                  <div class="btn-group btn-group-sm">
-                    <button class="btn btn-round btn-info"> <i class="material-icons">remove</i> </button>
-                    <button class="btn btn-round btn-info"> <i class="material-icons">add</i> </button>
-                  </div>
-                </td>
-                <td class="td-number">
-                  <small>￥</small>179,900.00
-                </td>
-                <td class="td-actions">
-                  <button type="button" rel="tooltip" data-placement="left" title="" class="btn btn-link"
-                    data-original-title="Remove item">
-                    <i class="material-icons">close</i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="img-container">
-                    <img src="../../../assets/img/moto/chartlist/timg2.jpg" alt="...">
-                  </div>
-                </td>
-                <td class="td-name">
-                  <a href="#pants">STREET BOB®</a>
-                  <br>
-                  <small>哈雷&amp;戴维森</small>
-                </td>
-                <td>
-                  亮黑色
-                </td>
-                <td>
-                  1000CC
-                </td>
-                <td class="td-number">
-                  <small>￥</small>149,900.00
-                </td>
-                <td class="td-number">
-                  1
-                  <div class="btn-group btn-group-sm">
-                    <button class="btn btn-round btn-info"> <i class="material-icons">remove</i> </button>
-                    <button class="btn btn-round btn-info"> <i class="material-icons">add</i> </button>
-                  </div>
-                </td>
-                <td class="td-number">
-                  <small>￥</small>149,900.00
-                </td>
-                <td class="td-actions">
-                  <button type="button" rel="tooltip" data-placement="left" title="" class="btn btn-link"
-                    data-original-title="Remove item">
-                    <i class="material-icons">close</i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="img-container">
-                    <img src="../../../assets/img/moto/chartlist/timg3.jpg" alt="...">
-                  </div>
-                </td>
-                <td class="td-name">
-                  <a href="#nothing">Street™750</a>
-                  <br>
-                  <small>哈雷&amp;戴维森</small>
-                </td>
-                <td>
-                  珍珠白
-                </td>
-                <td>
-                  750CC
-                </td>
-                <td class="td-number">
-                  <small>￥</small>129,000.00
-                </td>
-                <td class="td-number">
-                  1
-                  <div class="btn-group btn-group-sm">
-                    <button class="btn btn-round btn-info"> <i class="material-icons">remove</i> </button>
-                    <button class="btn btn-round btn-info"> <i class="material-icons">add</i> </button>
-                  </div>
-                </td>
-                <td class="td-number">
-                  <small>￥</small>129,000.00
-                </td>
-                <td class="td-actions">
-                  <button type="button" rel="tooltip" data-placement="left" title="" class="btn btn-link"
-                    data-original-title="Remove item">
-                    <i class="material-icons">close</i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="3"></td>
-                <td class="td-total">
-                  总计：
-                </td>
-                <td colspan="1" class="td-price">
-                  <small>￥</small>458,800.00
-                </td>
-                <td colspan="1"></td>
-                <td colspan="2" class="text-right">
-                  <button type="button" class="btn btn-info btn-round">立即支付 <i
-                      class="material-icons">keyboard_arrow_right</i></button>
-                </td>
-              </tr>
-              <!-- <tr>
-                <td colspan="6"></td>
-                <td colspan="2" class="text-right">
-                  <button type="button" class="btn btn-info btn-round">Complete Purchase <i class="material-icons">keyboard_arrow_right</i></button>
-                </td>
-              </tr> -->
-            </tbody>
-          </table>
-        </div>
+        <ng-container *ngIf="isError">
+          <app-network-error-component></app-network-error-component>
+        </ng-container>
+        <ng-container *ngIf="loading">
+          <app-loading-spinner>
+            正在购买，请稍后...
+          </app-loading-spinner>
+        </ng-container>
+        <ng-container *ngIf="!loading">
+          <ng-container *ngIf="cartItems.length">
+            <div class="table-responsive">
+              <table class="table table-shopping">
+                <thead>
+                  <tr>
+                    <th class="text-center"></th>
+                    <th>产品</th>
+                    <th class="text-center">颜色</th>
+                    <th class="text-center">排量</th>
+                    <th class="text-right">价格</th>
+                    <th class="text-right">数量</th>
+                    <th class="text-right">合计</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of cartItems">
+                    <td>
+                      <div class="img-container">
+                        <img [src]="item.image.url" alt="...">
+                      </div>
+                    </td>
+                    <td class="td-name">
+                      <a [routerLink]="['/product-detail', item._id]">{{item.title}}</a>
+                      <br>
+                      <small>哈雷&amp;戴维森</small>
+                    </td>
+                    <td>
+                      {{item.color}}
+                    </td>
+                    <td>
+                      {{item.output}} CC
+                    </td>
+                    <td class="td-number text-right">
+                      {{item.selling_price | currency:'CNY':'symbol-narrow'}}
+                    </td>
+                    <td class="td-number">
+                      {{item.count}}
+                      <div class="btn-group btn-group-sm">
+                        <button class="btn btn-round btn-info"> <i class="material-icons">remove</i> </button>
+                        <button class="btn btn-round btn-info"> <i class="material-icons">add</i> </button>
+                      </div>
+                    </td>
+                    <td class="td-number">
+                      {{item.selling_price*item.count | currency:'CNY':'symbol-narrow'}}
+                    </td>
+                    <td class="td-actions">
+                      <button (click)="handleRemoveItem(item.id)" type="button" rel="tooltip" data-placement="left" title="" class="btn btn-link"
+                        data-original-title="Remove item">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="3"></td>
+                    <td class="td-total">
+                      总计：
+                    </td>
+                    <td colspan="1" class="td-price">
+                      {{totalPrice | currency:'CNY':'symbol-narrow'}}
+                    </td>
+                    <td colspan="1"></td>
+                    <td colspan="2" class="text-right">
+                      <button type="button" class="btn btn-info btn-round">立即支付 <i
+                          class="material-icons">keyboard_arrow_right</i></button>
+                    </td>
+                  </tr>
+                  <!-- <tr>
+                    <td colspan="6"></td>
+                    <td colspan="2" class="text-right">
+                      <button type="button" class="btn btn-info btn-round">Complete Purchase <i class="material-icons">keyboard_arrow_right</i></button>
+                    </td>
+                  </tr> -->
+                </tbody>
+              </table>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="!cartItems || !cartItems.length">
+            <div class="row align-items-center">
+                <div class="col-sm-1">
+                    <a [routerLink]="['/home']">
+                      <i class="fa fa-cart-arrow-down fa-5x" aria-hidden="true" style="margin-top: -20px;"></i>
+                    </a>
+                </div>
+                <div class="col-sm-11">
+                  <p>您的购物车还是空的</p>
+                  <p>快来<a [routerLink]="['/home']">这里</a>逛逛吧：）</p>
+                </div>
+            </div> 
+          </ng-container>
+        </ng-container>
       </div>
     </div>
   </div>

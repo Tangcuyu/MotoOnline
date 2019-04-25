@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 import { ProductItemsService } from '../../providers/product-items.service';
-import { Observable } from 'rxjs';
+import { CartService } from '../../providers/cart.service';
 import { ItemDescription } from '../../models/item-description';
 import { AppConst } from '../../models/model';
 
@@ -23,17 +24,21 @@ export class ProductDetailComponent implements OnInit {
   public itemId: string;
 
 
-  constructor(private route: ActivatedRoute, private itemService: ProductItemsService) {}
+  constructor(
+    private route: ActivatedRoute, 
+    private itemService: ProductItemsService,
+    private cartService: CartService,
+    private snackBar: MatSnackBar,
+    ){}
 
   ngOnInit() {
     this.initFlexisel();
     this.itemId = this.route.snapshot.paramMap.get('id');
     this.loading = true;
     this.itemService.getItem(this.itemId).subscribe((returnitem: ItemDescription) => {
-
       this.item = returnitem[0];
+      this.item.id = returnitem[0]._id;
       this.loading = false;
-      // console.log(this.item);
     }, () => {
       this.loading = false;
       this.isError = true;
@@ -64,5 +69,21 @@ export class ProductDetailComponent implements OnInit {
             }
         });
     });
+  }
+
+  handleAddtoCartClick(item: ItemDescription) {
+    this.cartService.addItemToCart(item);
+    this.snackBar.open('商品添加成功','', {
+      duration: 2000
+    });
+  }
+
+  getItemsAvailable(): number {
+    const count = this.cartService.getTotalAvailableItems(this.item.id);
+    if (count !== undefined && count !== null) {
+      return count;
+    } else {
+      return this.item.total_on_hand;
+    }
   }
 }

@@ -15,6 +15,11 @@ const routes: Routes = [
     data: {backimg: '../../assets/img/moto/bj-1.jpeg'}
   },
   {
+    path: 'home',
+    component: HomeComponent,
+    data: {backimg: '../../assets/img/moto/bj-1.jpeg'}
+  },
+  {
     path: 'checkout',
     component: CheckoutCartComponent,
     data: {backimg: '../../assets/img/moto/bj-2.jpeg'}

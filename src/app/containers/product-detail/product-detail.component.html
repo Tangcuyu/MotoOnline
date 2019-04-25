@@ -105,7 +105,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-sm-6">
+          <div class="col-md-4 col-sm-4">
             <label>排量选择</label>
             <div class="btn-group bootstrap-select"><button type="button"
                 class="btn dropdown-toggle select-with-transition" data-toggle="dropdown" role="button"
@@ -126,9 +126,17 @@
               </div>
             </div>
           </div>
+          <div class="col-md-4 col-sm-4">
+            <label>库存余量</label> 
+            <div class="btn-group bootstrap-select">
+              <button type="button" class="btn select-with-transition" data-toggle="dropdown" role="button"
+                aria-labelledby="undefined" title="Rose"><span style="color: red">{{getItemsAvailable()}}</span>&nbsp;辆<span></span>
+              </button>
+            </div>
+          </div>
         </div>
         <div class="row pull-right">
-          <button class="btn btn-rose btn-round">加入购物车 &nbsp;<i class="material-icons">shopping_cart</i></button>
+          <button (click)="handleAddtoCartClick(item)" [disabled]="!getItemsAvailable()" class="btn btn-rose btn-round">加入购物车 &nbsp;<i class="material-icons">shopping_cart</i></button>
         </div>
       </div>
     </div>

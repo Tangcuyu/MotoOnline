@@ -42,7 +42,7 @@ export class NavbarComponent {
         console.log(`error : ${err.message}`);
       },
       () => {
-        console.log(`success`);
+        // console.log(`success`);
       }
     );
   }
