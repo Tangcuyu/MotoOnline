@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { ApiProvider } from './api.service';
 import { ItemDescription } from '../models/item-description';
 import { VoucherCodeResponse } from '../models/voucher-code-response';
 import { BuyParams } from '../models/buy-params';
 import { AppConst } from '../models/model';
-import { Observable }  from 'rxjs';
-import { Cart,CartItem } from '../models/cart';
+import { Observable } from 'rxjs';
+import { Cart, CartItem } from '../models/cart';
 
 
 
@@ -16,15 +16,17 @@ import { Cart,CartItem } from '../models/cart';
 export class CartService {
   private cart: any = {
     totalPrice: 0,   // 购物车总价
-    totalItems: 0,
+    totalItems: 0,  // 购物车中订单项总数
   };
   private cartItems: any = {};
-  private priceAfterDiscount: number = 0;
-  private totalPrice: number = 0; // 订单项价格
-  private totalItems: number = 0;
+  private priceAfterDiscount = 0;
+  private totalPrice = 0; // 单个订单项价格
+  private totalItems = 0; // 单个订单项数量
   private storeApiPath: string = environment.storeApiPath;
-  private voucherApplied: boolean = false;
-  private currentVoucher: string = '';
+  private voucherApplied = false;
+  private currentVoucher = '';
+
+  public change: EventEmitter<number>;
 
   /* 返回购物车中订单项的引用 */
   private getCartItemsReference(): Array<number> {
@@ -112,10 +114,11 @@ export class CartService {
   }
   // TODO: 从本地存储中获取订单项
   private getcartlocalStroage() {
-    
   }
 
-  constructor(private apiProvider: ApiProvider) { }
+  constructor(private apiProvider: ApiProvider) {
+    this.change = new EventEmitter();
+  }
 
   public addItemToCart(item: ItemDescription) {
     const id: string = item.id;
@@ -143,14 +146,14 @@ export class CartService {
       }
     }
     this.cart.totalPrice = this.totalPrice;
-    this.cart.cartItems = this.cartItems; 
-    localStorage.setItem('cart', JSON.stringify(this.cart));    
+    this.cart.cartItems = this.cartItems;
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
   public getCartItems(): any {
     if (localStorage.getItem('cart')) {
-      let cartStorage = JSON.parse(localStorage.getItem('cart'));
-      if ('cartItems'in cartStorage && cartStorage.cartItems !== undefined && cartStorage.cartItems !== null) {
+      const cartStorage = JSON.parse(localStorage.getItem('cart'));
+      if ('cartItems' in cartStorage && cartStorage.cartItems !== undefined && cartStorage.cartItems !== null) {
         this.cartItems = JSON.parse(localStorage.getItem('cart')).cartItems;
         return this.cartItems;
       }
@@ -162,7 +165,7 @@ export class CartService {
   public getTotalAvailableItems(ref: string): number {
     if (localStorage.getItem('cart')) {
       this.cart = JSON.parse(localStorage.getItem('cart'));
-      if ('cartItems'in this.cart && this.cart.cartItems[ref] !== undefined && this.cart.cartItems[ref] !== null) {
+      if ('cartItems' in this.cart && this.cart.cartItems[ref] !== undefined && this.cart.cartItems[ref] !== null) {
         return this.cart.cartItems[ref].total_on_hand;
       }
     } else {
@@ -172,7 +175,7 @@ export class CartService {
     }
   }
 
-  public getTotalPrice(): number {    
+  public getTotalPrice(): number {
     if (localStorage.getItem('cart')) {
       this.cart = JSON.parse(localStorage.getItem('cart'));
       if (this.cart.totalPrice !== undefined && this.cart.totalPrice !== null) {
@@ -182,7 +185,7 @@ export class CartService {
     }
   }
 
-  public getTotalItems(): number {    
+  public getTotalItems(): number {
     if (localStorage.getItem('cart')) {
       this.cart = JSON.parse(localStorage.getItem('cart'));
       if (this.cart.totalItems !== undefined && this.cart.totalItems !== null) {
@@ -212,7 +215,7 @@ export class CartService {
       this.cartItems[ref] = null;
       delete this.cartItems[ref];
     }
-    localStorage.setItem('cart', JSON.stringify(this.cart));     
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
   public updateQuantityOfItem(ref: string, totalQuantity: number) {
@@ -234,7 +237,7 @@ export class CartService {
       }
     }
     this.cart.cartItems = this.cartItems;
-    localStorage.setItem('cart', JSON.stringify(this.cart));     
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
   public removeAllItemsFromCart() {
@@ -271,6 +274,4 @@ export class CartService {
 
     return observable;
   }
-
-  
 }

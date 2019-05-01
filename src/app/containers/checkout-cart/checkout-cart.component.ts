@@ -15,9 +15,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./checkout-cart.component.css']
 })
 export class CheckoutCartComponent implements OnInit {
-  
+
   public cartItems: Array<ItemDescription> = [];
   public totalPrice = 0;
+  public totalItems = 0;
   public priceAfterDiscount = 0;
   public itemsListPath = '/home';
   public loading = false;
@@ -41,7 +42,9 @@ export class CheckoutCartComponent implements OnInit {
     this.priceAfterDiscount = this.cartService.getPriceAfterDiscount();
   }
 
-  constructor(private cartService: CartService, private snackBar: MatSnackBar) { }
+  constructor(private cartService: CartService, private snackBar: MatSnackBar) {
+
+   }
 
   ngOnInit() {
     this.updateCartItemsFromProvider();
@@ -54,6 +57,8 @@ export class CheckoutCartComponent implements OnInit {
 
   handleRemoveItem(ref: string) {
     this.cartService.removeItem(ref);
+    this.totalItems = this.cartService.getTotalItems();
+    this.cartService.change.emit(this.totalItems);
     this.updateCartItemsFromProvider();
     this.updatePriceFromProvider();
   }
@@ -91,6 +96,7 @@ export class CheckoutCartComponent implements OnInit {
     this.cartService.removeAllItemsFromCart();
     // Since we manage the cart items in provider in a different structure (to optimise the space)
     // we have to check and update the items and price for the cart
+    this.cartService.change.emit(0);
     this.updateCartItemsFromProvider();
     this.updatePriceFromProvider();
   }

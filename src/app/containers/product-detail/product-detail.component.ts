@@ -20,7 +20,6 @@ export class ProductDetailComponent implements OnInit {
   @Output()
   additem: EventEmitter<number>
         = new EventEmitter<number>();
-  
   public currencySymbol = AppConst.DEFAULT_CURRENCY_SYMBOL;
   public loading = false;
   public isError = false;
@@ -29,11 +28,11 @@ export class ProductDetailComponent implements OnInit {
 
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private itemService: ProductItemsService,
     private cartService: CartService,
     private snackBar: MatSnackBar,
-    ){}
+    ) {}
 
   ngOnInit() {
     this.initFlexisel();
@@ -52,7 +51,7 @@ export class ProductDetailComponent implements OnInit {
   // 产品图片轮播初始化
   initFlexisel() {
     $(document).ready(function() {
-        $("#flexiselDemo1").flexisel({
+        $('#flexiselDemo1').flexisel({
             visibleItems: 4,
             itemsToScroll: 1,
             animationSpeed: 400,
@@ -76,9 +75,10 @@ export class ProductDetailComponent implements OnInit {
   }
 
   handleAddtoCartClick(item: ItemDescription) {
+    let i = this.cartService.getTotalItems();
     this.cartService.addItemToCart(item);
-    this.additem.emit(7);
-    this.snackBar.open('商品添加成功','关闭', {
+    this.cartService.change.emit(++i);
+    this.snackBar.open('商品添加成功', '关闭', {
       duration: 2000
     });
   }
