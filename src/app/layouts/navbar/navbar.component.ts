@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit, OnChanges {
       );
     // 从本地存储获取购物车条目数量初始值
     const cart = JSON.parse(window.localStorage.getItem('cart'));
-    console.log(cart);
+    // console.log(cart);
     if (cart !== null && cart !== undefined) {
       this.items = cart.totalItems;
     }

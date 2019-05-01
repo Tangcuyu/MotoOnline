@@ -4,8 +4,8 @@ import { CartService } from '../../providers/cart.service';
 import { MatSnackBar } from '@angular/material';
 import { VoucherCodeResponse } from '../../models/voucher-code-response';
 import { ItemDescription } from '../../models/item-description';
-import { Router } from '@angular/router';
-
+import { Overlay } from 'ngx-modialog';
+import { Modal } from 'ngx-modialog/plugins/bootstrap';
 
 
 
@@ -42,7 +42,9 @@ export class CheckoutCartComponent implements OnInit {
     this.priceAfterDiscount = this.cartService.getPriceAfterDiscount();
   }
 
-  constructor(private cartService: CartService, private snackBar: MatSnackBar) {
+
+
+  constructor(private cartService: CartService, private snackBar: MatSnackBar, public modal: Modal) {
 
    }
 
@@ -50,6 +52,55 @@ export class CheckoutCartComponent implements OnInit {
     this.updateCartItemsFromProvider();
     this.updatePriceFromProvider();
   }
+
+  emptyConfirm() {
+    const dialogRef = this.modal.confirm()
+      .size('sm')
+      .showClose(false)
+      .okBtn('是')
+      .okBtnClass('btn btn-warning')
+      .cancelBtn('再想想')
+      .cancelBtnClass('btn btn-success')
+      .body(`<h4 class="card-title">确认要清空购物车吗？</h4>`)
+      .open();
+
+    dialogRef.result
+      .then(
+        result => {
+          if (result) {
+            this.handleEmptyCart();
+          }
+        },
+        () => {
+          console.log('canceled');
+          return;
+        });
+  }
+
+  delConfirm(id: string) {
+    const dialogRef = this.modal.confirm()
+      .size('sm')
+      .showClose(false)
+      .okBtn('是')
+      .okBtnClass('btn btn-warning')
+      .cancelBtn('再想想')
+      .cancelBtnClass('btn btn-success')
+      .body(`<h4 class="card-title">确认要删除吗？</h4>`)
+      .open();
+
+    dialogRef.result
+      .then(
+        result => {
+          if (result) {
+            this.handleRemoveItem(id);
+          }
+        },
+        () => {
+          console.log('canceled');
+          return;
+        });
+  }
+
 
   handleBuyNow() {
     console.log('buy items');

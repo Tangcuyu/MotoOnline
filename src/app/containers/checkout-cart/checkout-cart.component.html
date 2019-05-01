@@ -7,7 +7,7 @@
                 <h3 class="card-title">购物车</h3>
             </div>
             <div class="col-sm-1 offset-8" style="padding-top: 5px;">
-                <button class="btn btn-outline-danger btn-round btn-sm" color="primary" [disabled]="!cartItems.length"  (click)="handleEmptyCart()">
+                <button class="btn btn-outline-danger btn-round btn-sm" color="primary" [disabled]="!cartItems.length"  (click)="emptyConfirm()">
                     <span>清空购物车 <i class="material-icons">error_outline</i></span>
                 </button>
             </div>
@@ -69,7 +69,7 @@
                       {{item.selling_price*item.count | currency:'CNY':'symbol-narrow'}}
                     </td>
                     <td class="td-actions">
-                      <button (click)="handleRemoveItem(item.id)" type="button" rel="tooltip" data-placement="left" title="" class="btn btn-link"
+                      <button (click)="delConfirm(item.id)" type="button" rel="tooltip" data-placement="left" title="" class="btn btn-link"
                         data-original-title="Remove item">
                         <i class="material-icons">close</i>
                       </button>

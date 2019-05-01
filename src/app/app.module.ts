@@ -8,7 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule} from './material/material.module';
 import { HomeModule } from './home/home.module';
 import { AppRoutingModule } from './app.routing';
-
+import { ModalModule } from 'ngx-modialog';
+import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 
 // Container Components
 import { CheckoutCartComponent } from './containers/checkout-cart/checkout-cart.component';
@@ -16,7 +17,6 @@ import { ProductDetailComponent } from './containers/product-detail/product-deta
 
 // Dumb Components
 import { AppComponent } from './app.component';
-
 import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { LoginComponent } from './login/login.component';
@@ -41,6 +41,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     FormsModule,
     MaterialModule,
     HomeModule,
+    ModalModule.forRoot(),
+    BootstrapModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]
