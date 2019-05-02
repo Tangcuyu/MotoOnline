@@ -58,10 +58,12 @@ export class CheckoutCartComponent implements OnInit {
       .size('sm')
       .showClose(false)
       .okBtn('是')
-      .okBtnClass('btn btn-warning')
-      .cancelBtn('再想想')
-      .cancelBtnClass('btn btn-success')
-      .body(`<h4 class="card-title">确认要清空购物车吗？</h4>`)
+      .okBtnClass('btn btn-xs btn-secondary')
+      .cancelBtn('否')
+      .cancelBtnClass('btn btn-xs btn-secondary')
+      .body(`
+            <span>真的要清空购物车吗？</span>
+            `)
       .open();
 
     dialogRef.result
@@ -82,10 +84,12 @@ export class CheckoutCartComponent implements OnInit {
       .size('sm')
       .showClose(false)
       .okBtn('是')
-      .okBtnClass('btn btn-warning')
-      .cancelBtn('再想想')
-      .cancelBtnClass('btn btn-success')
-      .body(`<h4 class="card-title">确认要删除吗？</h4>`)
+      .okBtnClass('btn btn-xs btn-secondary')
+      .cancelBtn('否')
+      .cancelBtnClass('btn btn-xs btn-secondary')
+      .body(`
+            <span>真的要删除此商品吗？</span>
+            `)
       .open();
 
     dialogRef.result

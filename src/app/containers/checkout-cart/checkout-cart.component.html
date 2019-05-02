@@ -32,7 +32,7 @@
                     <th class="text-center">颜色</th>
                     <th class="text-center">排量</th>
                     <th class="text-right">价格</th>
-                    <th class="text-right">数量</th>
+                    <th class="text-center">数量</th>
                     <th class="text-right">合计</th>
                     <th></th>
                   </tr>
@@ -59,10 +59,10 @@
                       {{item.selling_price | currency:'CNY':'symbol-narrow'}}
                     </td>
                     <td class="td-number text-right">
-                      {{item.count}}
                       <div class="btn-group btn-group-sm">
-                        <button class="btn btn-round btn-info"> <i class="material-icons">remove</i> </button>
-                        <button class="btn btn-round btn-info"> <i class="material-icons">add</i> </button>
+                        <button mat-button color="primary"> <i class="material-icons">remove</i> </button>
+                        <span style="padding-top: 6px;">{{item.count}}</span>
+                        <button mat-button color="primary"> <i class="material-icons">add</i> </button>
                       </div>
                     </td>
                     <td class="td-number">
@@ -70,7 +70,7 @@
                     </td>
                     <td class="td-actions">
                       <button (click)="delConfirm(item.id)" type="button" rel="tooltip" data-placement="left" title="" class="btn btn-link"
-                        data-original-title="Remove item">
+                        data-original-title="删除此商品">
                         <i class="material-icons">close</i>
                       </button>
                     </td>
