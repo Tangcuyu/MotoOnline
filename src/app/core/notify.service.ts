@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { INotifyConifg } from '../models/model';
 
 declare var $: any;
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class NotifyService {
 
   constructor() { }
@@ -34,9 +36,9 @@ export class NotifyService {
           'col-sm-4 col-md-4 alert alert-{0} alert-with-icon" role="alert">' +
           '<button mat-button  type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">' +
           '  <i class="material-icons">close</i></button>' +
-          '<i class="material-icons" data-notify="icon">notifications</i> ' +
+          '<div><i class="fa fa-bell" data-notify="icon"></i>&nbsp;' +
           '<span data-notify="title">{1}</span> ' +
-          '<span data-notify="message">{2}</span>' +
+          '<span data-notify="message">{2}</span></div>' +
           '<div class="progress" data-notify="progressbar">' +
           '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" ' +
           'aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +

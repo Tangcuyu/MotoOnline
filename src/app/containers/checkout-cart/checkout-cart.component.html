@@ -3,14 +3,15 @@
   <div class="container">
     <div class="card card-plain">
       <div class="card-title row">
-            <div class="col-sm-2">
-                <h3 class="card-title">购物车</h3>
-            </div>
-            <div class="col-sm-1 offset-8" style="padding-top: 5px;">
-                <button class="btn btn-outline-danger btn-round btn-sm" color="primary" [disabled]="!cartItems.length"  (click)="emptyConfirm()">
-                    <span>清空购物车 <i class="material-icons">error_outline</i></span>
-                </button>
-            </div>
+        <div class="col-sm-2">
+          <h3 class="card-title">购物车</h3>
+        </div>
+        <div class="col-sm-1 offset-8" style="padding-top: 5px;">
+          <button class="btn btn-outline-danger btn-round btn-sm" color="primary" [disabled]="!cartItems.length"
+            (click)="emptyConfirm()">
+            <span>清空购物车 <i class="material-icons">error_outline</i></span>
+          </button>
+        </div>
       </div>
       <div class="card-body">
         <ng-container *ngIf="isError">
@@ -38,7 +39,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of cartItems">
+                  <tr *ngFor="let item of cartItems; let i = index;">
                     <td>
                       <div class="img-container">
                         <img [src]="item.image.url" alt="...">
@@ -60,17 +61,19 @@
                     </td>
                     <td class="td-number text-right">
                       <div class="btn-group btn-group-sm">
-                        <button mat-button color="primary"> <i class="material-icons">remove</i> </button>
+                        <button mat-button color="primary" (click)="handleMinusitem(i, item._id)"> <i
+                            class="material-icons">remove</i> </button>
                         <span style="padding-top: 6px;">{{item.count}}</span>
-                        <button mat-button color="primary"> <i class="material-icons">add</i> </button>
+                        <button mat-button color="primary" (click)="handleAdditem(i, item._id)"> <i
+                            class="material-icons">add</i> </button>
                       </div>
                     </td>
                     <td class="td-number">
                       {{item.selling_price*item.count | currency:'CNY':'symbol-narrow'}}
                     </td>
                     <td class="td-actions">
-                      <button (click)="delConfirm(item.id)" type="button" rel="tooltip" data-placement="left" title="" class="btn btn-link"
-                        data-original-title="删除此商品">
+                      <button (click)="delConfirm(item.id)" type="button" rel="tooltip" data-placement="left" title=""
+                        class="btn btn-link" data-original-title="删除此商品">
                         <i class="material-icons">close</i>
                       </button>
                     </td>
@@ -88,7 +91,9 @@
                     <td colspan="1">
                     </td>
                     <td colspan="2" class="text-right">
-                      <button type="button" class="btn btn-info btn-round mat-raised-button"><span class="mat-button-wrapper">立即支付 <i class="material-icons">keyboard_arrow_right</i></span> </button>
+                      <button type="button" class="btn btn-info btn-round mat-raised-button"><span
+                          class="mat-button-wrapper">立即支付 <i class="material-icons">keyboard_arrow_right</i></span>
+                      </button>
                     </td>
                   </tr>
                   <!-- <tr>
@@ -103,16 +108,16 @@
           </ng-container>
           <ng-container *ngIf="!cartItems || !cartItems.length">
             <div class="row align-items-center">
-                <div class="col-sm-1">
-                    <a [routerLink]="['/home']">
-                      <i class="fa fa-cart-arrow-down fa-5x" aria-hidden="true" style="margin-top: -20px;"></i>
-                    </a>
-                </div>
-                <div class="col-sm-11">
-                  <p>您的购物车还是空的</p>
-                  <p>快来<a [routerLink]="['/home']">这里</a>逛逛吧：）</p>
-                </div>
-            </div> 
+              <div class="col-sm-1">
+                <a [routerLink]="['/home']">
+                  <i class="fa fa-cart-arrow-down fa-5x" aria-hidden="true" style="margin-top: -20px;"></i>
+                </a>
+              </div>
+              <div class="col-sm-11">
+                <p>您的购物车还是空的</p>
+                <p>快来<a [routerLink]="['/home']">这里</a>逛逛吧：）</p>
+              </div>
+            </div>
           </ng-container>
         </ng-container>
       </div>

@@ -106,16 +106,6 @@ export class CartService {
     return this.apiProvider.httpGet(url);
   }
 
-  // TODO：把订单行保存到本地存储中
-  private putcartlocalStroage(cart) {
-    if (cart !== undefined && cart !== null) {
-      localStorage.setItem('cart', JSON.stringify(cart));
-    }
-  }
-  // TODO: 从本地存储中获取订单项
-  private getcartlocalStroage() {
-  }
-
   constructor(private apiProvider: ApiProvider) {
     this.change = new EventEmitter();
   }
@@ -190,7 +180,6 @@ export class CartService {
       this.cart = JSON.parse(localStorage.getItem('cart'));
       if (this.cart.totalItems !== undefined && this.cart.totalItems !== null) {
         this.totalItems = this.cart.totalItems;
-        console.log(this.totalItems);
         return Number(this.cart.totalItems);
       }
     } else {

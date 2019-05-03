@@ -17,7 +17,7 @@ export interface INotifyConifg {
     align: string;
     title: string;
     message: string;
-    color: number;
+    color: number; // 类型数组中的索引
     timer?: number;
     delay?: number;
 }
@@ -25,7 +25,7 @@ export interface INotifyConifg {
 export class AppConst {
     public static readonly STORE_API_PATHS = {
         getMenuItems: '/api/menuitems',
-        getItems: '/api/newModelItems',//  /goods
+        getItems: '/api/newModelItems',
         itemDescription: '/api/newModelItems/{{id}}',
         buyItems: '/people',
         verfiyVoucher: '/people'

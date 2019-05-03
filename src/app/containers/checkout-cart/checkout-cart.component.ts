@@ -4,9 +4,9 @@ import { CartService } from '../../providers/cart.service';
 import { MatSnackBar } from '@angular/material';
 import { VoucherCodeResponse } from '../../models/voucher-code-response';
 import { ItemDescription } from '../../models/item-description';
-import { Overlay } from 'ngx-modialog';
 import { Modal } from 'ngx-modialog/plugins/bootstrap';
-
+import { NotifyService } from '../../core/notify.service';
+import { INotifyConifg } from '../../models/model';
 
 
 @Component({
@@ -15,6 +15,8 @@ import { Modal } from 'ngx-modialog/plugins/bootstrap';
   styleUrls: ['./checkout-cart.component.css']
 })
 export class CheckoutCartComponent implements OnInit {
+
+  private notifyMessage: INotifyConifg;
 
   public cartItems: Array<ItemDescription> = [];
   public totalPrice = 0;
@@ -44,9 +46,11 @@ export class CheckoutCartComponent implements OnInit {
 
 
 
-  constructor(private cartService: CartService, private snackBar: MatSnackBar, public modal: Modal) {
-
-   }
+  constructor(
+    private cartService: CartService,
+    private snackBar: MatSnackBar,
+    public modal: Modal,
+    public notify: NotifyService) {}
 
   ngOnInit() {
     this.updateCartItemsFromProvider();
@@ -113,7 +117,7 @@ export class CheckoutCartComponent implements OnInit {
   handleRemoveItem(ref: string) {
     this.cartService.removeItem(ref);
     this.totalItems = this.cartService.getTotalItems();
-    this.cartService.change.emit(this.totalItems);
+    this.cartService.change.emit(this.totalItems);  // 发送服务更新时间，用来更新导航栏购物车按钮上数字
     this.updateCartItemsFromProvider();
     this.updatePriceFromProvider();
   }
@@ -133,7 +137,7 @@ export class CheckoutCartComponent implements OnInit {
 
   }
 
-  getQuantityList(ref: string): Array<number> {
+  /* getQuantityList(ref: string): Array<number> {
     const itemsCount = [];
     const item = this.cartItems.find((cartItem) => cartItem.id.toString() === ref.toString());
 
@@ -145,7 +149,40 @@ export class CheckoutCartComponent implements OnInit {
     }
     return itemsCount;
 
+  } */
+
+  handleAdditem(i: number, id: string) {
+    const count = this.cartItems[i].count;
+    const max = this.cartItems[i].max_items;
+    if (count < max) {
+      this.cartItems[i].count++;
+      this.updatePriceFromProvider();
+    } else {
+      console.log('已超过库存数量!');
+      this.notifyMessage = {
+        from: 'top',
+        align: 'center',
+        title: '',
+        timer: 1,
+        delay: 1,
+        message: '已超过库存数量!',
+        color: 3
+      };
+      this.notify.showNotification(this.notifyMessage);
+    }
+    // console.log(this.cartItems[i].count);
   }
+
+  handleMinusitem(i: number, id: string) {
+    const count = this.cartItems[i].count;
+    if (count > 1) {
+      this.cartItems[i].count--;
+      this.updatePriceFromProvider();
+    } else {
+      this.delConfirm(id);
+    }
+  }
+
 
   handleEmptyCart() {
     this.cartService.removeAllItemsFromCart();
@@ -155,6 +192,7 @@ export class CheckoutCartComponent implements OnInit {
     this.updateCartItemsFromProvider();
     this.updatePriceFromProvider();
   }
+
   handleVoucherAdded(voucher: string) {
     this.verifyingVoucher = true;
 

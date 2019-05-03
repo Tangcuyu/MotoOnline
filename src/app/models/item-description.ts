@@ -4,6 +4,7 @@ export class ItemDescription {
     id: string;
     name: string;
     sku: number; //  库存数
+    max_items: number; // 允许最大下单数
     weight: number;
     height: number;
     width: number;
@@ -11,6 +12,7 @@ export class ItemDescription {
     output: number;
     color: string[];
     slug: string;
+    count: number; // 订单项数量
     image: string;
     images: string[];
     thumbnail: string;
@@ -23,7 +25,7 @@ export class ItemDescription {
     priceAfterDiscount: number; // 经过优惠后的价格
     selling_price: number; // 经过调整后的，最终成交价格
     option_values: string[];
-    total_on_hand: number; //现货数量
+    total_on_hand: number; // 现货数量
     options_text: string;
     in_stock: boolean;
     is_backorderable: boolean;
@@ -35,6 +37,7 @@ export class ItemDescription {
       this.id = inputObj.id;
       this.name = inputObj.name;
       this.sku = Number(inputObj.sku);
+      this.max_items = Number(inputObj.max_items);
       this.height = inputObj.height;
       this.weight = inputObj.weight;
       this.width = inputObj.width;
@@ -42,6 +45,7 @@ export class ItemDescription {
       this.output = inputObj.output;
       this.color = inputObj.color;
       this.slug = inputObj.slug;
+      this.count = inputObj.count;
       this.image = inputObj.image;
       this.images = inputObj.images;
       this.thumbnail = inputObj.thumbnail;
