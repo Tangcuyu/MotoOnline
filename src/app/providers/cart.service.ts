@@ -229,7 +229,7 @@ export class CartService {
         const currentPriceForThisItem = (this.cartItems[ref].count * this.cartItems[ref].selling_price);
         const curretnCountForThisItem = this.cartItems[ref].count;
         this.cartItems[ref].count = totalQuantity;
-        this.cartItems[ref].items_available = max_available - totalQuantity;
+        this.cartItems[ref].total_on_hand = max_available - totalQuantity;
         this.totalPrice = this.totalPrice - currentPriceForThisItem;
         this.totalPrice = this.totalPrice + (this.cartItems[ref].count * this.cartItems[ref].selling_price);
         this.updateDiscountedPrice();
