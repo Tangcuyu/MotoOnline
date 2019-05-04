@@ -130,11 +130,11 @@ export class CheckoutCartComponent implements OnInit {
     return 0;
   } */
 
-  handleQuantityChange($event, ref: string) {
-    console.log($event, ref);
-    this.cartService.updateQuantityOfItem(ref, Number($event.target.value));
+  handleQuantityChange(quantity: number, ref: string) {
+    this.cartService.updateQuantityOfItem(ref, quantity);
+    this.totalItems = this.cartService.getTotalItems();
+    this.cartService.change.emit(this.totalItems);  // 发送服务更新时间，用来更新导航栏购物车按钮上数字
     this.updatePriceFromProvider();
-
   }
 
   /* getQuantityList(ref: string): Array<number> {
@@ -156,15 +156,14 @@ export class CheckoutCartComponent implements OnInit {
     const max = this.cartItems[i].max_items;
     if (count < max) {
       this.cartItems[i].count++;
-      this.updatePriceFromProvider();
+      this.handleQuantityChange(this.cartItems[i].count, id);
     } else {
       console.log('已超过库存数量!');
       this.notifyMessage = {
         from: 'top',
         align: 'center',
         title: '',
-        timer: 1,
-        delay: 1,
+        delay: 5,
         message: '已超过库存数量!',
         color: 3
       };
@@ -177,7 +176,7 @@ export class CheckoutCartComponent implements OnInit {
     const count = this.cartItems[i].count;
     if (count > 1) {
       this.cartItems[i].count--;
-      this.updatePriceFromProvider();
+      this.handleQuantityChange(this.cartItems[i].count, id);
     } else {
       this.delConfirm(id);
     }

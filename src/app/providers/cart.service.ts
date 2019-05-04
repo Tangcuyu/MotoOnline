@@ -110,6 +110,13 @@ export class CartService {
     this.change = new EventEmitter();
   }
 
+  /**
+   * saveCartToLocalStorage
+   */
+  public saveCartToLocalStorage(cart: Cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
   public addItemToCart(item: ItemDescription) {
     const id: string = item.id;
     if (localStorage.getItem('cart')) {
@@ -137,7 +144,8 @@ export class CartService {
     }
     this.cart.totalPrice = this.totalPrice;
     this.cart.cartItems = this.cartItems;
-    localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.saveCartToLocalStorage(this.cart);
+    // localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
   public getCartItems(): any {
@@ -204,29 +212,36 @@ export class CartService {
       this.cartItems[ref] = null;
       delete this.cartItems[ref];
     }
-    localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.saveCartToLocalStorage(this.cart);
+    // localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
   public updateQuantityOfItem(ref: string, totalQuantity: number) {
     if (localStorage.getItem('cart')) {
       this.cart = JSON.parse(localStorage.getItem('cart'));
+      this.cartItems = this.cart.cartItems;
+      this.totalItems = this.cart.totalItems;
+      this.totalPrice = this.cart.totalPrice;
     }
     if (this.cartItems[ref]) {
       const max_available = this.cartItems[ref].max_items;
       if (totalQuantity <= max_available) {
-        const currentPriceForThisItem = (this.cartItems[ref].count * this.cartItems[ref].cost);
+        const currentPriceForThisItem = (this.cartItems[ref].count * this.cartItems[ref].selling_price);
         const curretnCountForThisItem = this.cartItems[ref].count;
         this.cartItems[ref].count = totalQuantity;
         this.cartItems[ref].items_available = max_available - totalQuantity;
         this.totalPrice = this.totalPrice - currentPriceForThisItem;
-        this.totalPrice = this.totalPrice + (this.cartItems[ref].count * this.cartItems[ref].cost);
+        this.totalPrice = this.totalPrice + (this.cartItems[ref].count * this.cartItems[ref].selling_price);
         this.updateDiscountedPrice();
         this.totalItems = this.totalItems - curretnCountForThisItem;
         this.totalItems = this.totalItems + this.cartItems[ref].count;
       }
     }
     this.cart.cartItems = this.cartItems;
-    localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.cart.totalItems = this.totalItems;
+    this.cart.totalPrice = this.totalPrice;
+    this.saveCartToLocalStorage(this.cart);
+    // localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
   public removeAllItemsFromCart() {

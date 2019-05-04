@@ -1,11 +1,15 @@
 /* 商品详细信息类型定义： */
+import { Image } from './image';
 
 export class ItemDescription {
+    _id: string;
     id: string;
     name: string;
+    title: string;
     sku: number; //  库存数
     max_items: number; // 允许最大下单数
     weight: number;
+    length: number;
     height: number;
     width: number;
     depth: number;
@@ -13,8 +17,8 @@ export class ItemDescription {
     color: string[];
     slug: string;
     count: number; // 订单项数量
-    image: string;
-    images: string[];
+    image: Image;
+    images: Image[];
     thumbnail: string;
     productBrief: string;
     productDetail: string;
@@ -36,9 +40,11 @@ export class ItemDescription {
     if (inputObj) {
       this.id = inputObj.id;
       this.name = inputObj.name;
+      this.title = inputObj.title;
       this.sku = Number(inputObj.sku);
       this.max_items = Number(inputObj.max_items);
       this.height = inputObj.height;
+      this.length = inputObj.length;
       this.weight = inputObj.weight;
       this.width = inputObj.width;
       this.depth = inputObj.depth;
