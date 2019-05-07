@@ -1,31 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './login.component';
 import { UserAuthComponent } from './user-auth/user-auth.component';
-import { RouterModule } from '@angular/router';
-import { PagesRoutes } from './login.routing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
-import {
-  MatFormFieldModule,
-  MatButtonModule,
-  MatInputModule,
-  MatRippleModule,
-  MatTooltipModule,
-} from '@angular/material';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatInputModule,
-    MatRippleModule,
-    MatTooltipModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(PagesRoutes)
+    SharedModule,
+    TranslateModule
   ],
   declarations: [
     LoginComponent,
@@ -36,4 +18,4 @@ import {
     UserAuthComponent
   ]
 })
-export class PagesModule { }
+export class LoginModule { }

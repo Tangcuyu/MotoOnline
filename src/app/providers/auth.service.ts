@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs/';
 import { delay, tap, map, catchError } from 'rxjs/operators';
 import { UserCheckService } from './user-check.service';
-import { User } from '../../models/model';
+import { User } from '../models/model';
 import { Router } from '@angular/router';
 
 // Import OAuthservice from angular-oauth2-oidc

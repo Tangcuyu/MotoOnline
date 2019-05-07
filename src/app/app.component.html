@@ -1,4 +1,4 @@
-<app-navbar-component #nav></app-navbar-component>
+<app-navbar-component (langChange)="onLangChange($event)"></app-navbar-component>
 <router-outlet (additem) = "onAdditem()"></router-outlet>
 <app-footer></app-footer>
 

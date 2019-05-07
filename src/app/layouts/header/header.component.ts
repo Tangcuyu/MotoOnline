@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   private imgUrl: string;
-  private headerStyle = {};
+  public headerStyle = {};
 
   // 从激活路由中获取背景的图片路径数据
   constructor(private route: ActivatedRoute) {
@@ -19,13 +19,12 @@ export class HeaderComponent implements OnInit {
         this.headerStyle = {
           'background-image': this.imgUrl,
           'transform': 'translate3d(0px, 0px, 0px)'
-        }
+        };
       }
     );
   }
 
   ngOnInit() {
-    
   }
 
 }

@@ -1,10 +1,10 @@
   <div @myFadeinTrigger *ngIf="isShow" class="container login-page" >
     <div  class="row">
       <div class="col-lg-4 col-md-6 col-sm-6 ml-auto mr-auto">
-        <form (ngSubmit)="login(authForm.form)" #authForm="ngForm">
+        <form (ngSubmit)="login(authForm.form)" #authForm="ngForm" style="padding-top: 12rem">
           <div class="card card-login">
             <div class="card-header card-header-info text-center">
-              <h4 class="card-title">Log in with social acount</h4>
+              <h4 class="card-title">{{'login.loginTitle' | translate}}</h4>
               <div class="social-line">
                 <a class="btn btn-just-icon btn-link btn-white" href="">
                   <i class="fa fa-weixin"></i>
@@ -18,7 +18,7 @@
               </div>
             </div>
             <div class="card-body">
-              <p class="card-description text-center">Register new Account</p>
+              <p class="card-description text-center">{{'login.register' | translate}}</p>
               <!-- <span class="bmd-form-group">
                   <div class="input-group">
                     <div class="input-group-prepend">

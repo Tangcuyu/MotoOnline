@@ -1,9 +1,9 @@
 <nav class="navbar navbar-color-on-scroll fixed-top navbar-expand-lg navbar-transparent" color-on-scroll="100"
     id="sectionsNav">
     <div class="container">
+       
         <div class="navbar-translate">
-            <a class="navbar-brand" href="#">
-                哈雷-戴维森 </a>
+            <a class="navbar-brand" href="#">{{'navbar.logoTitle' | translate}} </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="sr-only">Toggle navigation</span>
@@ -20,7 +20,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-with-icons">
                         <div *ngFor="let subitem of menuitem.subItems;">
-                            <a href="#" class="dropdown-item">
+                            <a routerLink="{{subitem.subItemUrl}}" class="dropdown-item">
                                 <i class="material-icons">{{subitem.subItemString}}</i> {{subitem.subItemName}}
                             </a>
                         </div>
@@ -31,7 +31,11 @@
                         <i class="material-icons">shopping_cart</i> 购物车
                     </a>
                 </li>
+                <span style="padding-left: 3rem;" (click)="changeLanguage('hi')">
+                    <i class="fa fa-globe" aria-hidden="true"></i><span style="padding-left: 0.5rem">English</span>
+                </span>           
             </ul>
+            
         </div>
     </div>
 </nav>

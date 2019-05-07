@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthService } from './auth.service';
-import { Router, ActivatedRoute, RouterStateSnapshot } from '@angular/router';
+import { AuthService } from '../../providers/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 // Define animations 动画定义
 import { slideInAnimation } from '../../animations';
@@ -10,8 +11,7 @@ import { NotifyService } from '../../core/notify.service';
 import { INotifyConifg } from '../../models/model';
 
 
-import { Subscription, Observable } from 'rxjs/';
-import { switchMap } from 'rxjs/operators';
+import { Subscription } from 'rxjs/';
 
 
 declare var $: any;
@@ -44,10 +44,13 @@ export class UserAuthComponent implements OnInit, OnDestroy {
   public err: string;
 
 
-  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute,
-     private notify: NotifyService) {
-
-    }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private notify: NotifyService,
+    public translate: TranslateService
+    ) {}
 
 
   login(formAuth: any) {

@@ -3,6 +3,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { CartService } from './providers/cart.service';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -11,29 +12,41 @@ import { NavbarComponent } from './layouts/navbar/navbar.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy, OnChanges {
-  title = 'Select an option:';
-  login = true;
+  language: string;
   cartItemNuber: number;
-  @ViewChild('nav') private nav: NavbarComponent
+  @ViewChild('nav') private nav: NavbarComponent;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private translateService: TranslateService) {
+    // --- set i18n begin --- 翻译组件
+    this.translateService.addLangs(['zh', 'en']);
+    this.translateService.setDefaultLang('zh');
+    const browserLang = this.translateService.getBrowserLang();
+    this.translateService.use(browserLang.match(/zh|en/) ? browserLang : 'zh');
+    // --- set i18n end ---
+  }
 
   ngOnInit() {
-    
   }
 
   ngOnChanges() {
     this.cartItemNuber = this.cartService.getTotalItems();
   }
 
-  onAdditem(){
+  onAdditem() {
     this.nav.updateItems();
   }
   ngOnDestroy() {
-    
   }
 
-  onNotifyNavbar(buttonName: string) {
+  onLangChange($event) {
+    console.log($event);
+    this.language = this.translateService.currentLang;
+    console.log(this.language);
+    if (this.language === 'zh') {
+      this.translateService.use('en');
+    } else {
+      this.translateService.use('zh');
+    }
   }
 
   showHideSideClicked() {}

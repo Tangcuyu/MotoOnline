@@ -5,23 +5,28 @@ import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angul
 import { Observable } from 'rxjs/observable';
 import { catchError, retry, map } from 'rxjs/operators';
 import { throwError } from 'rxjs/';
+import { ApiProvider } from './api.service';
+import { AppConst } from '../models/model';
+import { environment } from '../../environments/environment';
 
-
-// const configUrl = 'http://localhost:3000/keystone/api/session/signin';
-const configUrl = 'http://localhost:3000/api/usertest';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
   })
 };
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserCheckService {
+  // 获取环境配置文件中的参数：后台API路径
+  private storeApiPath: string = environment.storeApiPath;
 
-  constructor(private http: HttpClient) { }
+  constructor(private apiProvider: ApiProvider) { }
 
   checkUser(user: any): Observable<Response>  {
-    return this.http.post<Response>(configUrl, user, httpOptions)
+    const userCheckUrl = this.storeApiPath + AppConst.STORE_API_PATHS.userCheck;
+    return this.apiProvider.httpPost(userCheckUrl, user, httpOptions)
       .pipe(
         catchError(this.handelError)
       );

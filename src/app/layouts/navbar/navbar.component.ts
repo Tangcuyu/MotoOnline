@@ -3,16 +3,7 @@ import { HttpClient} from '@angular/common/http';
 import { AppConst } from '../../models/model';
 import { environment } from '../../../environments/environment';
 import { CartService } from '../../providers/cart.service';
-
-interface ISubItem {
-  subItemName: string;
-  subItemString: string;
-}
-interface IMenuItem {
-  buttonName: string;
-  iconString: string;
-  subItems: ISubItem[];
-}
+import { IMenuItem } from '../../models/model';
 
 @Component({
     selector: 'app-navbar-component',
@@ -23,9 +14,7 @@ interface IMenuItem {
 
 @Injectable()
 export class NavbarComponent implements OnInit, OnChanges {
-  @Output()
-  notify: EventEmitter<string>
-        = new EventEmitter<string>();
+  @Output() langChange: EventEmitter<string> = new EventEmitter<string>();
   menuItems: IMenuItem[];
   items = 0;
   // 获取环境配置文件中的参数：后台API路径
@@ -61,11 +50,14 @@ export class NavbarComponent implements OnInit, OnChanges {
   ngOnChanges() {
   }
 
+  changeLanguage(message: string) {
+    this.langChange.emit(message);
+  }
+
   updateItems() {
   }
 
   navClicked(item: IMenuItem) {
-    this.notify.emit(`${item.buttonName}`);
   }
 
 }

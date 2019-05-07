@@ -1,13 +1,17 @@
 {
-    "sidebar": {
-        "logoTitle": "ITSI"
+    "navbar": {
+        "logoTitle": "Harley-Davidson"
+    },
+    "login": {
+        "loginTitle": "Login with social account",
+        "register": "Register new Account"
     },
     "Dashboard": "Dashboard",
     "User Profile": "User Profile",
-    "Table List":"Table List",
-    "Typography":"Typography",
-    "Icons":"Icons",
-    "Maps":"Maps",
-    "Notifications":"Notifications",
-    "Revenue":"Revenue"
+    "Table List": "Table List",
+    "Typography": "Typography",
+    "Icons": "Icons",
+    "Maps": "Maps",
+    "Notifications": "Notifications",
+    "Revenue": "Revenue"
 }

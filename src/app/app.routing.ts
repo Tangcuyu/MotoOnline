@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardService } from './login/user-auth/auth-guard.service';
-import { AppComponent } from './app.component';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AuthGuardService } from './providers/auth-guard.service';
+import { PagenotfoundComponent } from './layouts/pagenotfound/pagenotfound.component';
 import { HomeModule } from './home/home.module';
+import { LoginModule } from './login/login.module';
+import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CheckoutCartComponent } from './containers/checkout-cart/checkout-cart.component';
 import { ProductDetailComponent } from './containers/product-detail/product-detail.component';
@@ -13,6 +14,11 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     data: {backimg: '../../assets/img/moto/bj-1.jpeg'}
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: {backimg: '../../assets/img/cover.jpeg'}
   },
   {
     path: 'home',
@@ -38,7 +44,11 @@ const routes: Routes = [
 @NgModule({
   imports: [
     HomeModule,
-    RouterModule.forRoot(routes)
+    LoginModule,
+    RouterModule.forRoot(
+      routes,
+      // { enableTracing: true }
+    )
   ],
   exports: [
     RouterModule

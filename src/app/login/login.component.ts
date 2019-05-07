@@ -1,17 +1,25 @@
-import { Component, Injectable, EventEmitter, Output } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+// Import OAuthservice from angular-oauth2-oidc
+// import { OAuthService } from 'angular-oauth2-oidc';
+import { AuthService } from '../providers/auth.service';
+import { Router, ActivatedRoute, RouterStateSnapshot } from '@angular/router';
+
+
 
 @Component({
-  selector: 'app-login-component',
+  selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
-@Injectable()
-export class LoginComponent {
-  userName: string;
-  password: string;
-  constructor(private http: Http) {
-  }
-}
+export class LoginComponent implements OnInit {
 
+  constructor(public authService: AuthService, public router: Router) {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/']);
+    }
+  }
+
+  ngOnInit() {
+  }
+
+}
