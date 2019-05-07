@@ -6,13 +6,13 @@
             <div class="card-header card-header-info text-center">
               <h4 class="card-title">{{'login.loginTitle' | translate}}</h4>
               <div class="social-line">
-                <a class="btn btn-just-icon btn-link btn-white" href="">
+                <a class="btn btn-just-icon btn-link btn-white" href="" alt="微信">
                   <i class="fa fa-weixin"></i>
                 </a>
-                <a class="btn btn-just-icon btn-link btn-white" href="">
+                <a class="btn btn-just-icon btn-link btn-white" href="" alt="GitHub">
                   <i class="fa fa-github"></i>
                 </a>
-                <a class="btn btn-just-icon btn-link btn-white" (click)="loginOkta()">
+                <a class="btn btn-just-icon btn-link btn-white" (click)="loginOkta()" alt="Okta">
                   <i class="fa fa-openid"></i>
                 </a>
               </div>
@@ -47,7 +47,7 @@
                     </span>
                   </div>
                   <div class="form-group" style="width: 82%">
-                    <input  class="form-control" id="user-email" placeholder="Enter your email*" [(ngModel)]="email" name="email" email #useremail="ngModel" required>
+                    <input  class="form-control" id="user-email" placeholder="{{'login.emailPlaceholder' | translate}}" [(ngModel)]="email" name="email" email #useremail="ngModel" required>
                     <div *ngIf="useremail.touched">
                       <mat-error *ngIf="useremail.control.hasError('required')" class="validation-message" style="position: fixed;">You must enter email address</mat-error>
                     </div>
@@ -69,7 +69,7 @@
                     </span>
                   </div>
                   <div class="form-group" style="width: 82%">
-                    <input type="password" class="form-control" id="user-password" placeholder="Password..." [(ngModel)]="password" name="password"
+                    <input type="password" class="form-control" id="user-password" placeholder="{{'login.passwordPlaceholder' | translate}}" [(ngModel)]="password" name="password"
                       #passWord="ngModel" required>
                     <div *ngIf="passWord.touched">
                       <mat-error *ngIf="passWord.control.hasError('required')" style="position: fixed;">Password

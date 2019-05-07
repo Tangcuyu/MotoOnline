@@ -4,7 +4,9 @@
     },
     "login": {
         "loginTitle": "Login with social account",
-        "register": "Register new Account"
+        "register": "Register new Account",
+        "emailPlaceholder": "Engter your email*",
+        "passwordPlaceholder": "Password..."
     },
     "Dashboard": "Dashboard",
     "User Profile": "User Profile",
