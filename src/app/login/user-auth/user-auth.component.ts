@@ -55,7 +55,7 @@ export class UserAuthComponent implements OnInit, OnDestroy {
         res => {
           localStorage.setItem('token', res.token);
           const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '';
-          // const redirect = 'dashboard';
+          this.authService.change.emit('loginok');
           this.router.navigate([redirect]);
         },
         error => {
@@ -64,9 +64,6 @@ export class UserAuthComponent implements OnInit, OnDestroy {
           this.notify.showNotification(notifyconfig);
         }
     );
-  }
-
-  public loginOkta() {
   }
 
   ngOnInit() {

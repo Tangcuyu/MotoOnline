@@ -3,6 +3,7 @@ import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './login.component';
 import { UserAuthComponent } from './user-auth/user-auth.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   imports: [
@@ -11,11 +12,13 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   declarations: [
     LoginComponent,
-    UserAuthComponent
+    UserAuthComponent,
+    LogoutComponent
   ],
   exports: [
     LoginComponent,
-    UserAuthComponent
+    UserAuthComponent,
+    LogoutComponent
   ]
 })
 export class LoginModule { }

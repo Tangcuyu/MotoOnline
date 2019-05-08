@@ -1,7 +1,7 @@
 /* 使用邮件和密码的方式进行用户身份验证服务 */
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs/';
-import { delay, tap, map, catchError } from 'rxjs/operators';
+import { EventEmitter } from '@angular/core';
 import { UserCheckService } from './user-check.service';
 import { User } from '../models/model';
 import { Router } from '@angular/router';
@@ -12,11 +12,14 @@ import { filter } from 'rxjs/operators';
 })
 export class AuthService {
   //  store the URL so we can redirect after logging in.
-  redirectUrl: string;
+  redirectUrl = '';
   userProfile: User;
+  change: EventEmitter<string>;
+
 
   constructor(private userCheck: UserCheckService, private router: Router) {
     // this.configureWithNewConfigApi();
+    this.change = new EventEmitter();
   }
 
   public login(formAuth: User): Observable<any> {
