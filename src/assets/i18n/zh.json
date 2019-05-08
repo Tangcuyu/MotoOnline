@@ -2,6 +2,10 @@
     "navbar": {
         "logoTitle": "哈雷戴维森"
     },
+    "header": {
+        "subject": "哈雷在线",
+        "subhead": "一切为了自由™"
+    },
     "login": {
         "loginTitle": "社交账户登录",
         "register": "注册新用户",

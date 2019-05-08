@@ -2,6 +2,10 @@
     "navbar": {
         "logoTitle": "Harley-Davidson"
     },
+    "header": {
+        "subject": "Harley-Davidson Online",
+        "subhead": "ALL FOR FREEDOM. FREEDOM FOR ALL.™"
+    },
     "login": {
         "loginTitle": "Login with social account",
         "register": "Register new Account",

@@ -12,6 +12,7 @@ import { NetworkErrorComponent } from '../layouts/network-error/network-error.co
 import { SubscribeComponent } from '../layouts/subscribe/subscribe.component';
 import { HomefooterComponent } from './homefooter/homefooter.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 const components = [
     NewmodelComponent,
@@ -33,6 +34,7 @@ const components = [
   imports: [
     MaterialModule,
     CommonModule,
+    TranslateModule,
     RouterModule
   ],
   exports: [

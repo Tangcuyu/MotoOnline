@@ -13,9 +13,11 @@ import { HomeModule } from './home/home.module';
 import { AppRoutingModule } from './app.routing';
 
 // import ngx-translate and the http loader
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateCompiler, TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TokenInterceptorService } from './providers/token-interceptor.service';
+// import ngx-translate-messageformat-compiler
+import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 
 // Container Components
 import { CheckoutCartComponent } from './containers/checkout-cart/checkout-cart.component';
@@ -54,7 +56,12 @@ import { PagenotfoundComponent } from './layouts/pagenotfound/pagenotfound.compo
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
-      }
+      },
+      // compiler configuration
+        compiler: {
+          provide: TranslateCompiler,
+          useClass: TranslateMessageFormatCompiler
+        }
     }),
     LoginModule,
     AppRoutingModule,
