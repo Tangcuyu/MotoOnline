@@ -6,7 +6,11 @@
         "loginTitle": "Login with social account",
         "register": "Register new Account",
         "emailPlaceholder": "Engter your email*",
-        "passwordPlaceholder": "Password..."
+        "emailEnterErr": "You must enter email address",
+        "emailVaildErr": "Not a vaild email",
+        "passwordPlaceholder": "Password...",
+        "passwordRequied": "Password is required",
+        "loginButton": "LETS GO"
     },
     "Dashboard": "Dashboard",
     "User Profile": "User Profile",

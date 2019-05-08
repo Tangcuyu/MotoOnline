@@ -1,15 +1,10 @@
-/* 用户身份验证 */
+/* 使用邮件和密码的方式进行用户身份验证服务 */
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs/';
 import { delay, tap, map, catchError } from 'rxjs/operators';
 import { UserCheckService } from './user-check.service';
 import { User } from '../models/model';
 import { Router } from '@angular/router';
-
-// Import OAuthservice from angular-oauth2-oidc
-// import { OAuthService } from 'angular-oauth2-oidc';
-// import { JwksValidationHandler } from 'angular-oauth2-oidc';
-// import { authConfig } from '../auth.config';
 import { filter } from 'rxjs/operators';
 
 @Injectable({
@@ -19,13 +14,11 @@ export class AuthService {
   //  store the URL so we can redirect after logging in.
   redirectUrl: string;
   userProfile: User;
-  // isLoggedIn = false;
 
   constructor(private userCheck: UserCheckService, private router: Router) {
     // this.configureWithNewConfigApi();
   }
 
-  // 使用本地用户名密码验证登录
   public login(formAuth: User): Observable<any> {
     return this.userCheck.checkUser(formAuth);
   }
@@ -36,7 +29,7 @@ export class AuthService {
 
   public logout(): void {
     localStorage.removeItem('token');
-    this.router.navigate(['/pages/login']);
+    this.router.navigate([this.redirectUrl]);
   }
 
   public getToken() {

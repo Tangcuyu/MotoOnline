@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../providers/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs/';
 
 // Define animations 动画定义
 import { slideInAnimation } from '../../animations';
@@ -10,11 +11,7 @@ import { slideInAnimation } from '../../animations';
 import { NotifyService } from '../../core/notify.service';
 import { INotifyConifg } from '../../models/model';
 
-
-import { Subscription } from 'rxjs/';
-
-
-declare var $: any;
+//  提醒服务配置参数
 const notifyconfig: INotifyConifg = {
   from: 'top',
   align: 'center',
@@ -33,11 +30,8 @@ const notifyconfig: INotifyConifg = {
 })
 export class UserAuthComponent implements OnInit, OnDestroy {
   public sub: Subscription;
-  // public userConfig: IUserConfig; // Certified user infomation
-  // public headers: string[];
   public isShow: Boolean; // 验证表单动画显示开关
   public message: string; // log infomation
-  // public userName: string;
   public email: string;
   public password: string;
   public submitted: Boolean = false;
@@ -57,11 +51,10 @@ export class UserAuthComponent implements OnInit, OnDestroy {
     if (!formAuth.valid) {
       return;
     }
-
     this.sub = this.authService.login(formAuth.value).subscribe(
         res => {
           localStorage.setItem('token', res.token);
-          const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : 'dashboard';
+          const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '';
           // const redirect = 'dashboard';
           this.router.navigate([redirect]);
         },
@@ -74,7 +67,6 @@ export class UserAuthComponent implements OnInit, OnDestroy {
   }
 
   public loginOkta() {
-    // this.authService.loginWithOkta();
   }
 
   ngOnInit() {

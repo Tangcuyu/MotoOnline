@@ -5,8 +5,12 @@
     "login": {
         "loginTitle": "社交账户登录",
         "register": "注册新用户",
-        "emailPlaceholder": "请输入邮箱地址",
-        "passwordPlaceholder": "密码..." 
+        "emailPlaceholder": "邮箱地址",
+        "emailEnterErr": "请输入邮箱地址",
+        "emailVaildErr": "不是有效的邮箱地址",
+        "passwordPlaceholder": "密码...",
+        "passwordRequied": "请输入密码",
+        "loginButton": "登 录"
     },
     "Dashboard": "仪表盘",
     "User Profile": "用户信息",

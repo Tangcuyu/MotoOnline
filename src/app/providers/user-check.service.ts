@@ -1,13 +1,15 @@
 /* 检查本地keystone用户名和密码是否正确 */
 
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/observable';
 import { catchError, retry, map } from 'rxjs/operators';
 import { throwError } from 'rxjs/';
 import { ApiProvider } from './api.service';
 import { AppConst } from '../models/model';
 import { environment } from '../../environments/environment';
+import { User } from '../models/model';
+
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,7 +26,7 @@ export class UserCheckService {
 
   constructor(private apiProvider: ApiProvider) { }
 
-  checkUser(user: any): Observable<Response>  {
+  checkUser(user: User): Observable<Response>  {
     const userCheckUrl = this.storeApiPath + AppConst.STORE_API_PATHS.userCheck;
     return this.apiProvider.httpPost(userCheckUrl, user, httpOptions)
       .pipe(

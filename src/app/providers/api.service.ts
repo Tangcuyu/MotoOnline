@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/';
+import { Observable, throwError } from 'rxjs/';
 import 'rxjs/add/operator/catch';
 
 @Injectable({
@@ -57,7 +57,7 @@ export class ApiProvider {
    * Handles all the network errors from the Http methods
    */
   handleNetworkErrors(errObject: HttpErrorResponse): Observable<any> {
-    return Observable.throw({
+    return throwError({
       status: errObject.status,
       body: errObject.error
     });

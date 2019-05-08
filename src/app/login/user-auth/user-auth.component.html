@@ -49,11 +49,10 @@
                   <div class="form-group" style="width: 82%">
                     <input  class="form-control" id="user-email" placeholder="{{'login.emailPlaceholder' | translate}}" [(ngModel)]="email" name="email" email #useremail="ngModel" required>
                     <div *ngIf="useremail.touched">
-                      <mat-error *ngIf="useremail.control.hasError('required')" class="validation-message" style="position: fixed;">You must enter email address</mat-error>
+                      <mat-error *ngIf="useremail.control.hasError('required')" class="validation-message" >{{'login.emailEnterErr' | translate}}</mat-error>
                     </div>
                     <div *ngIf="useremail.dirty">
-                      <mat-error *ngIf="useremail.control.hasError('email')" class="validation-message"
-                        style="position: fixed;">Not a valid email</mat-error>
+                      <mat-error *ngIf="useremail.control.hasError('email')" class="validation-message">{{'login.emailVaildErr' | translate}}</mat-error>
                     </div>
                       
                       <!-- <label *ngIf="" class="alert alert-danger validation-message">A user
@@ -72,9 +71,7 @@
                     <input type="password" class="form-control" id="user-password" placeholder="{{'login.passwordPlaceholder' | translate}}" [(ngModel)]="password" name="password"
                       #passWord="ngModel" required>
                     <div *ngIf="passWord.touched">
-                      <mat-error *ngIf="passWord.control.hasError('required')" style="position: fixed;">Password
-                        is
-                        required</mat-error>
+                      <mat-error *ngIf="passWord.control.hasError('required')">{{'login.passwordRequied' | translate}}</mat-error>
                     </div>
                   </div>
                 </div>
@@ -88,7 +85,7 @@
               </span> -->
             </div>
             <div class="card-footer justify-content-center">
-              <button class="btn btn-rose btn-link btn-lg" type="submit" [disabled]="!authForm.form.valid">Lets Go</button>
+              <button class="btn btn-rose btn-link btn-lg" type="submit" [disabled]="!authForm.form.valid">{{'login.loginButton' | translate}}</button>
             </div>
           </div>
         </form>
