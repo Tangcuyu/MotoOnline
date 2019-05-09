@@ -39,9 +39,7 @@ export class AppComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   onLangChange($event) {
-    console.log($event);
     this.language = this.translateService.currentLang;
-    console.log(this.language);
     if (this.language === 'zh') {
       this.translateService.use('en');
     } else {

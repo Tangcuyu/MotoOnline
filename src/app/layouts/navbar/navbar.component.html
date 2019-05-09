@@ -16,19 +16,19 @@
             <ul class="navbar-nav ml-auto">
                 <li class="dropdown nav-item" *ngFor="let menuitem of menuItems; let i = index">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <i class="material-icons">{{menuitem.iconString}}</i> {{menuitem.buttonName}}
+                        <i class="material-icons"></i> {{ menuitem.translateKey | translate }}
                     </a>
                     <div class="dropdown-menu dropdown-with-icons">
-                        <div *ngFor="let subitem of menuitem.subItems;">
+                       <div *ngFor="let subitem of menuitem.subItems;">
                             <a routerLink="{{subitem.subItemUrl}}" class="dropdown-item">
-                                <i class="material-icons">{{subitem.subItemString}}</i> {{subitem.subItemName}}
+                                <i class="material-icons">{{subitem.subItemString}}</i> {{subitem.translateKey | translate}}
                             </a>
                         </div>
                     </div>
                 </li>
                 <li class="button-container nav-item iframe-extern" >
                     <a mat-raised-button matBadge="{{items}}" matBadgePosition="after" routerLink="/checkout" class="btn btn-rose  btn-round btn-block">
-                        <i class="material-icons">shopping_cart</i> 购物车
+                        <i class="material-icons">shopping_cart</i> {{'cart' | translate}}
                     </a>
                 </li>
                 <span style="padding-left: 3rem;" (click)="changeLanguage('hi')">

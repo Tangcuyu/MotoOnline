@@ -1,6 +1,24 @@
 {
-	"Revenue": "",
-	"sidebar": {
+	"cart": "",
+	"header": {
+		"subhead": "",
+		"subject": ""
+	},
+	"login": {
+		"emailEnterErr": "",
+		"emailPlaceholder": "",
+		"emailVaildErr": "",
+		"loginButton": "",
+		"loginTitle": "",
+		"passwordPlaceholder": "",
+		"passwordRequied": "",
+		"register": ""
+	},
+	"navbar": {
 		"logoTitle": ""
+	},
+	"notify": {
+		"message": "",
+		"title": ""
 	}
 }

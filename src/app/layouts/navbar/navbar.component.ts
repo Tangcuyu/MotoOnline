@@ -6,6 +6,10 @@ import { CartService } from '../../providers/cart.service';
 import { IMenuItem } from '../../models/model';
 import { AuthService } from '../../providers/auth.service';
 
+// 测试翻译模块功能
+import { _ } from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
+
+
 @Component({
     selector: 'app-navbar-component',
     templateUrl: './navbar.component.html',
@@ -20,6 +24,35 @@ export class NavbarComponent implements OnInit, OnChanges {
   @Output() langChange: EventEmitter<string> = new EventEmitter<string>();
   menuItems: IMenuItem[];
   isLoggedIn: boolean;
+
+/* 可以使用翻译模块中的 _() 函数在TS文件中获取翻译字符串 */
+  // translateTest: any;
+  translateTest = [
+    {
+      name: 'item1',
+      subItems: [
+        { subItemName: 'sub1'}
+      ]
+    },
+    {
+      name: 'item2',
+      subItems: [
+        { subItemName: 'sub2' }
+      ]
+    },
+    {
+      name: 'item3',
+      subItems: [
+        { subItemName: 'sub3' }
+      ]
+    },
+    {
+      name: 'item4',
+      subItems: [
+        { subItemName: 'sub4' }
+      ]
+    }
+  ];
 
   // private fields
   private storeApiPath: string = environment.storeApiPath; // 获取环境配置文件中的参数：后台API路径
@@ -39,17 +72,26 @@ export class NavbarComponent implements OnInit, OnChanges {
 
  constructor (private http: HttpClient, private cartService: CartService, private authservice: AuthService) {
    this.isLoggedIn = this.authservice.isLoggedIn();
-   console.log(this.isLoggedIn);
    // 获取导航数据
    this.http.get<any>(this.storeApiPath + AppConst.STORE_API_PATHS.getMenuItems)
      .subscribe(
        (data) => {
          if (this.isLoggedIn) {
-           this.menuItems = data;
+          this.menuItems = data;
          } else {
-           data[3].buttonName = this.logoutItemStr;
+           data[3].buttonName = this.logoutItemStr; // 修改第四个菜单的名称: 用户登录 || 我的世界
            this.menuItems = data;
          }
+         console.log(this.menuItems);
+         for (let i = 0; i < this.menuItems.length; i++) {
+           const element = this.menuItems[i];
+           element.translateKey = 'menu.item' + i + '.name';
+           for (let subi = 0; subi < element.subItems.length; subi++) {
+             const subelement = element.subItems[subi];
+             subelement.translateKey = 'menu.item' + i + '.submenu.sub' + (subi + 1) + '.name';
+           }
+         }
+         console.log(this.menuItems);
        },
        err => {
          console.log(`error : ${err.message}`);
@@ -67,7 +109,7 @@ export class NavbarComponent implements OnInit, OnChanges {
      this.items = value;
    });
 
-   // 相应登录事件
+   // 响应登录事件
    this.authservice.change.subscribe((value) => {
       switch (value) {
         case 'loginok':

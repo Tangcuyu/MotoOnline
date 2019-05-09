@@ -1,27 +1,88 @@
 {
-    "navbar": {
-        "logoTitle": "Harley-Davidson"
+	"cart": "cart",
+	"header": {
+		"subhead": "ALL FOR FREEDOM. FREEDOM FOR ALL.™",
+		"subject": "Harley-Davidson Online"
+	},
+	"login": {
+		"emailEnterErr": "You must enter email address",
+		"emailPlaceholder": "Engter your email*",
+		"emailVaildErr": "Not a vaild email",
+		"loginButton": "LETS GO",
+		"loginTitle": "Login with social account",
+		"passwordPlaceholder": "Password...",
+		"passwordRequied": "Password is required",
+		"register": "Register new Account"
+	},
+	"navbar": {
+		"logoTitle": "Harley-Davidson"
+	},
+	"notify": {
+		"message": "",
+		"title": ""
     },
-    "header": {
-        "subject": "Harley-Davidson Online",
-        "subhead": "ALL FOR FREEDOM. FREEDOM FOR ALL.™"
-    },
-    "login": {
-        "loginTitle": "Login with social account",
-        "register": "Register new Account",
-        "emailPlaceholder": "Engter your email*",
-        "emailEnterErr": "You must enter email address",
-        "emailVaildErr": "Not a vaild email",
-        "passwordPlaceholder": "Password...",
-        "passwordRequied": "Password is required",
-        "loginButton": "LETS GO"
-    },
-    "Dashboard": "Dashboard",
-    "User Profile": "User Profile",
-    "Table List": "Table List",
-    "Typography": "Typography",
-    "Icons": "Icons",
-    "Maps": "Maps",
-    "Notifications": "Notifications",
-    "Revenue": "Revenue"
+    "menu": {
+        "item0": {
+            "name": "Tools",
+            "submenu": {
+                "sub1": {
+                    "name": "handbook"
+                },
+                "sub2": {
+                    "name": "specification"
+                },
+                "sub3": {
+                    "name": "address"
+                }
+            }
+        },
+        "item1": {
+            "name": "Member",
+            "submenu": {
+                "sub1": {
+                    "name": "vip"
+                },
+                "sub2": {
+                    "name": "discount"
+                },
+                "sub3": {
+                    "name": "rules"
+                }
+            }
+        },
+        "item2": {
+            "name": "School",
+            "submenu": {
+                "sub1": {
+                    "name": "train"
+                },
+                "sub2": {
+                    "name": "learning"
+                },
+                "sub3": {
+                    "name": "support"
+                }
+            }
+        },
+        "item3": {
+            "name": "User",
+            "submenu": {
+                "sub1": {
+                    "name": "profile"
+                },
+                "sub2": {
+                    "name": "password"
+                },
+                "sub3": {
+                    "name": "payment"
+                },
+                "sub4": {
+                    "name": "login"
+                },
+                "sub5": {
+                    "name": "logout"
+                }
+            }
+        }
+    }
 }

@@ -1,27 +1,88 @@
 {
-    "navbar": {
-        "logoTitle": "哈雷戴维森"
+	"cart": "购物车",
+	"header": {
+		"subhead": "一切为了自由™",
+		"subject": "哈雷在线"
+	},
+	"login": {
+		"emailEnterErr": "请输入邮箱地址",
+		"emailPlaceholder": "邮箱地址",
+		"emailVaildErr": "不是有效的邮箱地址",
+		"loginButton": "登 录",
+		"loginTitle": "社交账户登录",
+		"passwordPlaceholder": "密码...",
+		"passwordRequied": "请输入密码",
+		"register": "注册新用户"
+	},
+	"navbar": {
+		"logoTitle": "哈雷戴维森"
+	},
+	"notify": {
+		"message": "",
+		"title": ""
     },
-    "header": {
-        "subject": "哈雷在线",
-        "subhead": "一切为了自由™"
-    },
-    "login": {
-        "loginTitle": "社交账户登录",
-        "register": "注册新用户",
-        "emailPlaceholder": "邮箱地址",
-        "emailEnterErr": "请输入邮箱地址",
-        "emailVaildErr": "不是有效的邮箱地址",
-        "passwordPlaceholder": "密码...",
-        "passwordRequied": "请输入密码",
-        "loginButton": "登 录"
-    },
-    "Dashboard": "仪表盘",
-    "User Profile": "用户信息",
-    "Table List": "列表",
-    "Typography": "排版",
-    "Icons": "图标",
-    "Maps": "地图",
-    "Notifications": "通知",
-    "Revenue": "利润"
+    "menu": {
+        "item0": {
+            "name": "选购工具",
+            "submenu": {
+                "sub1": {
+                    "name": "技术手册"
+                },
+                "sub2": {
+                    "name": "说明书"
+                },
+                "sub3": {
+                    "name": "门店地址"
+                }
+            }
+        },
+        "item1": {
+            "name": "MOTO车友会",
+            "submenu": {
+                "sub1": {
+                    "name": "贵宾客户VIP"
+                },
+                "sub2": {
+                    "name": "优惠活动"
+                },
+                "sub3": {
+                    "name": "会员规则"
+                }
+            }
+        },
+        "item2": {
+            "name": "骑行学院",
+            "submenu": {
+                "sub1": {
+                    "name": "培训"
+                },
+                "sub2": {
+                    "name": "学习"
+                },
+                "sub3": {
+                    "name": "支持"
+                }
+            }
+        },
+        "item3": {
+            "name": "用户登录",
+            "submenu": {
+                "sub1": {
+                    "name": "个人资料"
+                },
+                "sub2": {
+                    "name": "修改密码"
+                },
+                "sub3": {
+                    "name": "支付方式"
+                },
+                "sub4": {
+                    "name": "用户登录"
+                },
+                "sub5": {
+                    "name": "退出登录"
+                }
+            }
+        }        
+    }
 }

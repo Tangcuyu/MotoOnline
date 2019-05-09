@@ -3,10 +3,12 @@ export interface ISubItem {
     subItemName: string;
     subItemString: string;
     subItemUrl: string;
+    translateKey: string; // For translate 用于在翻译的时候，根据这个key值在翻译文件中找到对应翻译的字符串
 }
 export interface IMenuItem {
     buttonName: string;
     iconString: string;
+    translateKey: string; // For translate 用于在翻译的时候，根据这个key值在翻译文件中找到对应翻译的字符串
     subItems: ISubItem[];
 }
 
