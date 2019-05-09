@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   onAdditem() {
-    this.nav.updateItems();
+    // this.nav.updateItems();
   }
   ngOnDestroy() {
   }

@@ -25,35 +25,6 @@ export class NavbarComponent implements OnInit, OnChanges {
   menuItems: IMenuItem[];
   isLoggedIn: boolean;
 
-/* 可以使用翻译模块中的 _() 函数在TS文件中获取翻译字符串 */
-  // translateTest: any;
-  translateTest = [
-    {
-      name: 'item1',
-      subItems: [
-        { subItemName: 'sub1'}
-      ]
-    },
-    {
-      name: 'item2',
-      subItems: [
-        { subItemName: 'sub2' }
-      ]
-    },
-    {
-      name: 'item3',
-      subItems: [
-        { subItemName: 'sub3' }
-      ]
-    },
-    {
-      name: 'item4',
-      subItems: [
-        { subItemName: 'sub4' }
-      ]
-    }
-  ];
-
   // private fields
   private storeApiPath: string = environment.storeApiPath; // 获取环境配置文件中的参数：后台API路径
   private logoutItemStr = '用户登录';
@@ -62,12 +33,6 @@ export class NavbarComponent implements OnInit, OnChanges {
   // public methods
   changeLanguage(message: string) {
     this.langChange.emit(message);
-  }
-
-  updateItems() {
-  }
-
-  navClicked(item: IMenuItem) {
   }
 
  constructor (private http: HttpClient, private cartService: CartService, private authservice: AuthService) {
@@ -83,14 +48,7 @@ export class NavbarComponent implements OnInit, OnChanges {
            this.menuItems = data;
          }
          console.log(this.menuItems);
-         for (let i = 0; i < this.menuItems.length; i++) {
-           const element = this.menuItems[i];
-           element.translateKey = 'menu.item' + i + '.name';
-           for (let subi = 0; subi < element.subItems.length; subi++) {
-             const subelement = element.subItems[subi];
-             subelement.translateKey = 'menu.item' + i + '.submenu.sub' + (subi + 1) + '.name';
-           }
-         }
+         this.translateKey();
          console.log(this.menuItems);
        },
        err => {
@@ -130,4 +88,15 @@ export class NavbarComponent implements OnInit, OnChanges {
   }
 
   // private methods
+  /* 添加key到数组中，用于翻译模块根据key查找翻译字符串 */
+  private translateKey() {
+    for (let i = 0; i < this.menuItems.length; i++) {
+      const element = this.menuItems[i];
+      element.translateKey = 'menu.item' + i + '.name';
+      for (let subi = 0; subi < element.subItems.length; subi++) {
+        const subelement = element.subItems[subi];
+        subelement.translateKey = 'menu.item' + i + '.submenu.sub' + (subi + 1) + '.name';
+      }
+    }
+  }
 }
