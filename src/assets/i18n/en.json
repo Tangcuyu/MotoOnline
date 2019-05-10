@@ -40,13 +40,13 @@
             "name": "Member",
             "submenu": {
                 "sub1": {
-                    "name": "vip"
-                },
-                "sub2": {
                     "name": "discount"
                 },
-                "sub3": {
+                "sub2": {
                     "name": "rules"
+                },
+                "sub3": {
+                    "name": "vip"
                 }
             }
         },
@@ -65,7 +65,8 @@
             }
         },
         "item3": {
-            "name": "User",
+            "name": "Login",
+            "named": "My world",
             "submenu": {
                 "sub1": {
                     "name": "profile"

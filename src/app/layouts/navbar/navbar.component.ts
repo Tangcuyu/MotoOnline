@@ -1,6 +1,6 @@
 import { Component, Injectable, EventEmitter, Output, OnChanges, Input, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { AppConst } from '../../models/model';
+import { AppConst, ISubItem } from '../../models/model';
 import { environment } from '../../../environments/environment';
 import { CartService } from '../../providers/cart.service';
 import { IMenuItem } from '../../models/model';
@@ -37,18 +37,13 @@ export class NavbarComponent implements OnInit, OnChanges {
 
  constructor (private http: HttpClient, private cartService: CartService, private authservice: AuthService) {
    this.isLoggedIn = this.authservice.isLoggedIn();
-   // 获取导航数据
+   // 获取导航数据,在返回的导航数据中增加translateKey
    this.http.get<any>(this.storeApiPath + AppConst.STORE_API_PATHS.getMenuItems)
      .subscribe(
        (data) => {
-         if (this.isLoggedIn) {
-          this.menuItems = data;
-         } else {
-           data[3].buttonName = this.logoutItemStr; // 修改第四个菜单的名称: 用户登录 || 我的世界
-           this.menuItems = data;
-         }
-         console.log(this.menuItems);
-         this.translateKey();
+         this.menuItems = data;
+         this.translateKey(this.menuItems);
+         this.menuLoginChange(this.menuItems);
          console.log(this.menuItems);
        },
        err => {
@@ -89,14 +84,31 @@ export class NavbarComponent implements OnInit, OnChanges {
 
   // private methods
   /* 添加key到数组中，用于翻译模块根据key查找翻译字符串 */
-  private translateKey() {
-    for (let i = 0; i < this.menuItems.length; i++) {
-      const element = this.menuItems[i];
+  private translateKey(arr: IMenuItem[]) {
+    for (let i = 0; i < arr.length; i++) {
+      const element = arr[i];
       element.translateKey = 'menu.item' + i + '.name';
       for (let subi = 0; subi < element.subItems.length; subi++) {
         const subelement = element.subItems[subi];
         subelement.translateKey = 'menu.item' + i + '.submenu.sub' + (subi + 1) + '.name';
       }
+    }
+    return arr;
+  }
+
+  // 判断用户是否登录，如果用户已登录则修改菜单名为“我的世界”，并删除用户登录子菜单
+  private menuLoginChange(menu: IMenuItem[]) {
+    const arr = menu[3];
+    if (this.isLoggedIn) {
+      arr.translateKey = 'menu.item3.named';
+      arr.subItems.splice(arr.subItems.findIndex(item => item.subItemName === '用户登录'), 1);
+      menu[3] = arr;
+      return menu;
+    } else {
+      arr.translateKey = 'menu.item3.name';
+      arr.subItems.splice(0, 5, arr.subItems.find(item => item.subItemName === '用户登录'));
+      menu[3] = arr;
+      return menu;
     }
   }
 }
