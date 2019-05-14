@@ -55,7 +55,7 @@ export class UserAuthComponent implements OnInit, OnDestroy {
         res => {
           localStorage.setItem('token', res.token);
           const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '';
-          this.authService.change.emit('loginok');
+          this.authService.change.emit(this.authService.isLoggedIn());
           this.router.navigate([redirect]);
         },
         error => {

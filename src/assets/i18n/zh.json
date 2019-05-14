@@ -14,76 +14,124 @@
 		"passwordRequied": "请输入密码",
 		"register": "注册新用户"
 	},
+	"menu": {
+		"item0": {
+			"name": "选购工具",
+			"submenu": {
+				"sub1": {
+					"name": "技术手册"
+				},
+				"sub2": {
+					"name": "说明书"
+				},
+				"sub3": {
+					"name": "门店地址"
+				}
+			}
+		},
+		"item1": {
+			"name": "MOTO车友会",
+			"submenu": {
+				"sub1": {
+					"name": "优惠活动"
+				},
+				"sub2": {
+					"name": "会员规则"
+				},
+				"sub3": {
+					"name": "贵宾客户"
+				}
+			}
+		},
+		"item2": {
+			"name": "骑行学院",
+			"submenu": {
+				"sub1": {
+					"name": "培训"
+				},
+				"sub2": {
+					"name": "学习"
+				},
+				"sub3": {
+					"name": "支持"
+				}
+			}
+		},
+		"item3": {
+			"name": "我的世界",
+			"submenu": {
+				"sub1": {
+					"name": "个人资料"
+				},
+				"sub2": {
+					"name": "修改密码"
+				},
+				"sub3": {
+					"name": "支付方式"
+				},
+				"sub4": {
+					"name": "退出登录"
+				}
+			}
+		}
+    },
+    "menulogout": {
+		"item0": {
+			"name": "选购工具",
+			"submenu": {
+				"sub1": {
+					"name": "技术手册"
+				},
+				"sub2": {
+					"name": "说明书"
+				},
+				"sub3": {
+					"name": "门店地址"
+				}
+			}
+		},
+		"item1": {
+			"name": "MOTO车友会",
+			"submenu": {
+				"sub1": {
+					"name": "优惠活动"
+				},
+				"sub2": {
+					"name": "会员规则"
+				},
+				"sub3": {
+					"name": "贵宾客户"
+				}
+			}
+		},
+		"item2": {
+			"name": "骑行学院",
+			"submenu": {
+				"sub1": {
+					"name": "培训"
+				},
+				"sub2": {
+					"name": "学习"
+				},
+				"sub3": {
+					"name": "支持"
+				}
+			}
+		},
+		"item3": {
+			"name": "用户登录",
+			"submenu": {
+				"sub1": {
+					"name": "登录"
+				}
+			}
+		}
+	},
 	"navbar": {
 		"logoTitle": "哈雷戴维森"
 	},
 	"notify": {
 		"message": "",
 		"title": ""
-    },
-    "menu": {
-        "item0": {
-            "name": "选购工具",
-            "submenu": {
-                "sub1": {
-                    "name": "技术手册"
-                },
-                "sub2": {
-                    "name": "说明书"
-                },
-                "sub3": {
-                    "name": "门店地址"
-                }
-            }
-        },
-        "item1": {
-            "name": "MOTO车友会",
-            "submenu": {
-                "sub1": {
-                    "name": "优惠活动"
-                },
-                "sub2": {
-                    "name": "会员规则"
-                },
-                "sub3": {
-                    "name": "贵宾客户"
-                }
-            }
-        },
-        "item2": {
-            "name": "骑行学院",
-            "submenu": {
-                "sub1": {
-                    "name": "培训"
-                },
-                "sub2": {
-                    "name": "学习"
-                },
-                "sub3": {
-                    "name": "支持"
-                }
-            }
-        },
-        "item3": {
-            "name": "用户登录",
-            "named": "我的世界",
-            "submenu": {
-                "sub1": {
-                    "name": "个人资料"
-                },
-                "sub2": {
-                    "name": "修改密码"
-                },
-                "sub3": {
-                    "name": "支付方式"
-                },
-                "sub4": {
-                    "name": "登录"
-                },
-                "sub5": {
-                    "name": "退出登录"
-                }
-            }
-        }        
-    }
+	}
 }

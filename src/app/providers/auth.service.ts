@@ -14,7 +14,7 @@ export class AuthService {
   //  store the URL so we can redirect after logging in.
   redirectUrl = '';
   userProfile: User;
-  change: EventEmitter<string>;
+  change: EventEmitter<boolean>;
 
 
   constructor(private userCheck: UserCheckService, private router: Router) {

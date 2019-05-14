@@ -12,7 +12,7 @@ export class LogoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authservice.change.emit('logoutok');
+    this.authservice.change.emit(false);
     this.authservice.logout();
   }
 

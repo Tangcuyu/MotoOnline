@@ -22,8 +22,8 @@ export class ProductItemsService {
 
   // 使用apiProvider的实例获取后台产品列表数据
   getItemsList(): Observable<Array<ItemsListItem>> {
-    const itemsList: string = this.storeApiPath + AppConst.STORE_API_PATHS.getItems;
-    return this.apiProvider.httpGet(itemsList)
+    const itemsListUrl: string = this.storeApiPath + AppConst.STORE_API_PATHS.getItems;
+    return this.apiProvider.httpGet(itemsListUrl)
       .pipe(
         map((res: any) => {
           if (res) {

@@ -14,76 +14,124 @@
 		"passwordRequied": "Password is required",
 		"register": "Register new Account"
 	},
+	"menu": {
+		"item0": {
+			"name": "Tools",
+			"submenu": {
+				"sub1": {
+					"name": "HandBook"
+				},
+				"sub2": {
+					"name": "specification"
+				},
+				"sub3": {
+					"name": "address"
+				}
+			}
+		},
+		"item1": {
+			"name": "Member",
+			"submenu": {
+				"sub1": {
+					"name": "discount"
+				},
+				"sub2": {
+					"name": "rules"
+				},
+				"sub3": {
+					"name": "vip"
+				}
+			}
+		},
+		"item2": {
+			"name": "School",
+			"submenu": {
+				"sub1": {
+					"name": "train"
+				},
+				"sub2": {
+					"name": "learning"
+				},
+				"sub3": {
+					"name": "support"
+				}
+			}
+		},
+		"item3": {
+			"name": "My World",
+			"submenu": {
+				"sub1": {
+					"name": "profile"
+				},
+				"sub2": {
+					"name": "password"
+				},
+				"sub3": {
+					"name": "payment"
+				},
+				"sub4": {
+					"name": "logout"
+				}
+			}
+		}
+    },
+    "menulogout": {
+		"item0": {
+			"name": "Tools",
+			"submenu": {
+				"sub1": {
+					"name": "HandBook"
+				},
+				"sub2": {
+					"name": "specification"
+				},
+				"sub3": {
+					"name": "address"
+				}
+			}
+		},
+		"item1": {
+			"name": "Member",
+			"submenu": {
+				"sub1": {
+					"name": "discount"
+				},
+				"sub2": {
+					"name": "rules"
+				},
+				"sub3": {
+					"name": "vip"
+				}
+			}
+		},
+		"item2": {
+			"name": "School",
+			"submenu": {
+				"sub1": {
+					"name": "train"
+				},
+				"sub2": {
+					"name": "learning"
+				},
+				"sub3": {
+					"name": "support"
+				}
+			}
+		},
+		"item3": {
+			"name": "login",
+			"submenu": {
+				"sub1": {
+					"name": "login"
+				}
+			}
+		}
+    },
 	"navbar": {
 		"logoTitle": "Harley-Davidson"
 	},
 	"notify": {
 		"message": "",
 		"title": ""
-    },
-    "menu": {
-        "item0": {
-            "name": "Tools",
-            "submenu": {
-                "sub1": {
-                    "name": "handbook"
-                },
-                "sub2": {
-                    "name": "specification"
-                },
-                "sub3": {
-                    "name": "address"
-                }
-            }
-        },
-        "item1": {
-            "name": "Member",
-            "submenu": {
-                "sub1": {
-                    "name": "discount"
-                },
-                "sub2": {
-                    "name": "rules"
-                },
-                "sub3": {
-                    "name": "vip"
-                }
-            }
-        },
-        "item2": {
-            "name": "School",
-            "submenu": {
-                "sub1": {
-                    "name": "train"
-                },
-                "sub2": {
-                    "name": "learning"
-                },
-                "sub3": {
-                    "name": "support"
-                }
-            }
-        },
-        "item3": {
-            "name": "Login",
-            "named": "My world",
-            "submenu": {
-                "sub1": {
-                    "name": "profile"
-                },
-                "sub2": {
-                    "name": "password"
-                },
-                "sub3": {
-                    "name": "payment"
-                },
-                "sub4": {
-                    "name": "login"
-                },
-                "sub5": {
-                    "name": "logout"
-                }
-            }
-        }
-    }
+	}
 }

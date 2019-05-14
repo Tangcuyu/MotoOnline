@@ -10,7 +10,7 @@ import { ModalModule } from 'ngx-modialog';
 import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 import { LoginModule } from './login/login.module';
 import { HomeModule } from './home/home.module';
-import { AppRoutingModule } from './app.routing';
+import { AppRoutingModule } from './app-routing.module';
 
 // import ngx-translate and the http loader
 import { TranslateCompiler, TranslateModule, TranslateLoader } from '@ngx-translate/core';
