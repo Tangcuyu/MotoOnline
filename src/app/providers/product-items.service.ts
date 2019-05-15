@@ -20,22 +20,26 @@ export class ProductItemsService {
   // apiProvider实现http的各种请求服务
   constructor(private apiProvider: ApiProvider) { }
 
-  // 使用apiProvider的实例获取后台产品列表数据
+  // 使用apiProvider的实例获取最新产品列表数据
   getItemsList(): Observable<Array<ItemsListItem>> {
     const itemsListUrl: string = this.storeApiPath + AppConst.STORE_API_PATHS.getItems;
     return this.apiProvider.httpGet(itemsListUrl)
       .pipe(
         map((res: any) => {
           if (res) {
-            // console.log('res is ', res);
             return res;
           }
         }));
   }
 
-  //
+  // 获取产品详细信息
   getItem(id: string): Observable<ItemDescription> {
     const itemDecUrl: string =  this.storeApiPath +  AppConst.STORE_API_PATHS.itemDescription.replace('{{id}}', id);
     return this.apiProvider.httpGet<ItemDescription>(itemDecUrl);
+  }
+
+  // 获取所有产品列表
+  getProductList(): Observable<Array<ItemsListItem>> {
+    return 
   }
 }
