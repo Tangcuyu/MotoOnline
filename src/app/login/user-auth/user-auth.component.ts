@@ -8,8 +8,11 @@ import { Subscription } from 'rxjs/';
 import { slideInAnimation } from '../../animations';
 
 // 消息提醒服务
-import { NotifyService } from '../../core/notify.service';
+import { NotifyService } from '../../providers/notify.service';
 import { INotifyConifg } from '../../models/model';
+
+import {_} from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
+
 
 //  提醒服务配置参数
 const notifyconfig: INotifyConifg = {
@@ -17,7 +20,7 @@ const notifyconfig: INotifyConifg = {
   align: 'center',
   title: '',
   message: '',
-  color: 3,
+  color: 1,
   timer: 2000,
   delay: 1000
 };

@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import { VoucherCodeResponse } from '../../models/voucher-code-response';
 import { ItemDescription } from '../../models/item-description';
 import { Modal } from 'ngx-modialog/plugins/bootstrap';
-import { NotifyService } from '../../core/notify.service';
+import { NotifyService } from '../../providers/notify.service';
 import { INotifyConifg } from '../../models/model';
 
 

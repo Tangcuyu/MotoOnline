@@ -74,8 +74,8 @@
 				}
 			}
 		}
-    },
-    "menulogout": {
+	},
+	"menulogout": {
 		"item0": {
 			"name": "选购工具",
 			"submenu": {
@@ -131,7 +131,9 @@
 		"logoTitle": "哈雷戴维森"
 	},
 	"notify": {
-		"message": "",
-		"title": ""
+		"401": "您输入的电子邮件和密码无效。",
+		"403": "服务器禁止： 无效CSRF",
+		"networkerr": "发生客户端或网络错误",
+		"servererr": "服务器故障,请联系管理员"
 	}
 }

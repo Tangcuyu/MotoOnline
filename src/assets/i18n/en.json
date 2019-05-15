@@ -74,8 +74,8 @@
 				}
 			}
 		}
-    },
-    "menulogout": {
+	},
+	"menulogout": {
 		"item0": {
 			"name": "Tools",
 			"submenu": {
@@ -126,12 +126,14 @@
 				}
 			}
 		}
-    },
+	},
 	"navbar": {
 		"logoTitle": "Harley-Davidson"
 	},
 	"notify": {
-		"message": "",
-		"title": ""
+		"401": "The email and password you entered are not valid.",
+		"403": "Server Forbidden： Invaild CSRF",
+		"networkerr": "client-side or network error occurred",
+		"servererr": "Something bad happened; please try again later"
 	}
 }

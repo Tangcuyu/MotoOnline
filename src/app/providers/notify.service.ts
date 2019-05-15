@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { INotifyConifg } from '../models/model';
+import { TranslateService } from '@ngx-translate/core';
 
 declare var $: any;
 @Injectable({
@@ -7,12 +8,15 @@ declare var $: any;
 })
 export class NotifyService {
 
-  constructor() { }
+  constructor(
+    public translate: TranslateService
+  ) { }
 
   showNotification(notifyconfig: INotifyConifg) {
     const type = ['', 'info', 'success', 'warning', 'danger'];
+    const color = Math.floor((Math.random() * 4) + 1);
 
-    // const color = Math.floor((Math.random() * 4) + 1);
+    notifyconfig.color = color;
 
     $.notify({
       icon: 'notifications',
@@ -37,8 +41,8 @@ export class NotifyService {
           <button mat-button  type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">
             <i class="material-icons">close</i></button>
           <div><i class="fa fa-bell" data-notify="icon"></i>&nbsp;
-          <span data-notify="title" [translate]="'notify.title'">{1}</span>
-          <span data-notify="message" [translate]="'notify.message'">{2}</span></div>
+          <span data-notify="title" translate>{1}</span>
+          <span data-notify="message" translate>{2}</span></div>
           <div class="progress" data-notify="progressbar">
           <div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0"
           aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>

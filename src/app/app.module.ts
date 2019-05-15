@@ -1,43 +1,36 @@
-// Modules
+// Third party imports
+import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
 import { HttpClient, HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-modialog';
+import { NgModule } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
-import { ModalModule } from 'ngx-modialog';
-import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
-import { LoginModule } from './login/login.module';
-import { HomeModule } from './home/home.module';
-import { AppRoutingModule } from './app-routing.module';
 
-// import ngx-translate and the http loader
+// Application imports
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { FooterComponent } from './layouts/footer/footer.component';
+import { HomeModule } from './home/home.module';
+import { LoginModule } from './login/login.module';
+import { NavbarComponent } from './layouts/navbar/navbar.component';
+import { ProductModule } from './product/product.module';
+import { PagenotfoundComponent } from './layouts/pagenotfound/pagenotfound.component';
+import { SalesModule } from './sales/sales.module';
+import { TokenInterceptorService } from './providers/token-interceptor.service';
 import { TranslateCompiler, TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { TokenInterceptorService } from './providers/token-interceptor.service';
-// import ngx-translate-messageformat-compiler
 import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 
-// Container Components
-import { CheckoutCartComponent } from './containers/checkout-cart/checkout-cart.component';
-import { ProductDetailComponent } from './containers/product-detail/product-detail.component';
-
-// Dumb Components
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './layouts/navbar/navbar.component';
-import { FooterComponent } from './layouts/footer/footer.component';
-import { PagenotfoundComponent } from './layouts/pagenotfound/pagenotfound.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     FooterComponent,
+    NavbarComponent,
     PagenotfoundComponent,
-    CheckoutCartComponent,
-    ProductDetailComponent,
   ],
   imports: [
     SharedModule,
@@ -45,9 +38,9 @@ import { PagenotfoundComponent } from './layouts/pagenotfound/pagenotfound.compo
     BrowserAnimationsModule,
     HttpClientModule,
     HttpClientXsrfModule,
-    FormsModule,
+    ProductModule,
+    SalesModule,
     RouterModule,
-    ReactiveFormsModule,
     HomeModule,
     ModalModule.forRoot(),
     BootstrapModalModule,

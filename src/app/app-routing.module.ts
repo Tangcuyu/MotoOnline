@@ -7,8 +7,8 @@ import { LoginModule } from './login/login.module';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './login/logout/logout.component';
 import { HomeComponent } from './home/home.component';
-import { CheckoutCartComponent } from './containers/checkout-cart/checkout-cart.component';
-import { ProductDetailComponent } from './containers/product-detail/product-detail.component';
+import { CheckoutCartComponent } from './sales/checkout-cart/checkout-cart.component';
+import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 
 const routes: Routes = [
   {
