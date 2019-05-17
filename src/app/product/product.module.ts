@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
-import { HomeModule } from '../home/home.module';
+
+import { FilterComponent } from './filter/filter.component';
+import { LayoutsModule } from '../layouts/layouts.module';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 const components = [
-  ProductDetailComponent
+  FilterComponent,
+  ProductDetailComponent,
+  ProductListComponent
 ];
 
 @NgModule({
@@ -14,9 +20,10 @@ const components = [
     components
   ],
   imports: [
-    HomeModule,
+    LayoutsModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    TranslateModule
   ],
   exports: [
     components

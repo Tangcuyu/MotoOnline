@@ -28,7 +28,7 @@ const httpOptions = {
 export class UserCheckService {
   // 获取环境配置文件中的参数：后台API路径
   private storeApiPath: string = environment.storeApiPath;
-  
+
   constructor(
     public apiProvider: ApiProvider,
     public translate: TranslateService

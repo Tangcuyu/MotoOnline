@@ -16,12 +16,12 @@
             <ul class="navbar-nav ml-auto">
                 <li class="dropdown nav-item" *ngFor="let menuitem of menuItems; let i = index">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <i class="material-icons"></i> {{ menuitem.translateKey | translate }}
+                        <i class="material-icons"></i> {{ menuitem.translateKey | translate: {'username': menuitem.buttonName}  }}
                     </a>
                     <div class="dropdown-menu dropdown-with-icons">
                        <div *ngFor="let subitem of menuitem.subItems;">
                             <a routerLink="{{subitem.subItemUrl}}" class="dropdown-item">
-                                <i class="material-icons">{{subitem.subItemString}}</i> {{subitem.translateKey | translate}}
+                                <i class="material-icons">{{subitem.subItemString}}</i> {{ subitem.translateKey | translate }}
                             </a>
                         </div>
                     </div>

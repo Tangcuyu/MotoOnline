@@ -11,12 +11,10 @@ import { SharedModule } from './shared/shared.module';
 // Application imports
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FooterComponent } from './layouts/footer/footer.component';
 import { HomeModule } from './home/home.module';
+import { LayoutsModule } from './layouts/layouts.module';
 import { LoginModule } from './login/login.module';
-import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { ProductModule } from './product/product.module';
-import { PagenotfoundComponent } from './layouts/pagenotfound/pagenotfound.component';
 import { SalesModule } from './sales/sales.module';
 import { TokenInterceptorService } from './providers/token-interceptor.service';
 import { TranslateCompiler, TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -28,14 +26,12 @@ import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-comp
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
-    NavbarComponent,
-    PagenotfoundComponent,
   ],
   imports: [
     SharedModule,
     BrowserModule,
     BrowserAnimationsModule,
+    LayoutsModule,
     HttpClientModule,
     HttpClientXsrfModule,
     ProductModule,
@@ -69,8 +65,8 @@ import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-comp
 export class AppModule {
   constructor(router: Router) {
     // Use a custom replacer to display function names in the route configs
-    const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
-    console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
+    // const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
+    // console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
   }
 }
 

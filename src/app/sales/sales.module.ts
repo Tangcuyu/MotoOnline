@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 
-import { HomeModule } from '../home/home.module';
 import { CheckoutCartComponent } from '../sales/checkout-cart/checkout-cart.component';
+import { LayoutsModule } from '../layouts/layouts.module';
+import { HomeModule } from '../home/home.module';
+import { SharedModule } from '../shared/shared.module';
+
 
 const components = [
   CheckoutCartComponent
@@ -15,6 +17,7 @@ const components = [
   ],
   imports: [
     HomeModule,
+    LayoutsModule,
     RouterModule,
     SharedModule
   ],

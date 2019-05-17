@@ -58,7 +58,7 @@
 			}
 		},
 		"item3": {
-			"name": "我的世界",
+			"name": "欢迎您: {username}",
 			"submenu": {
 				"sub1": {
 					"name": "个人资料"

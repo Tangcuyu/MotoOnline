@@ -58,7 +58,7 @@
 			}
 		},
 		"item3": {
-			"name": "My World",
+			"name": "Hi, {username}",
 			"submenu": {
 				"sub1": {
 					"name": "profile"

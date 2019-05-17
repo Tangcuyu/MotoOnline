@@ -1,15 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthService } from '../../providers/auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs/';
 
-// Define animations 动画定义
-import { slideInAnimation } from '../../animations';
-
-// 消息提醒服务
+import { AuthService } from '../../providers/auth.service';
 import { NotifyService } from '../../providers/notify.service';
 import { INotifyConifg } from '../../models/model';
+import { SlideInAnimation } from '../../animations';
+
 
 import {_} from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 
@@ -29,7 +27,7 @@ const notifyconfig: INotifyConifg = {
   selector: 'app-user-auth',
   templateUrl: './user-auth.component.html',
   styleUrls: ['./user-auth.component.scss'],
-  animations: [slideInAnimation]
+  animations: [SlideInAnimation]
 })
 export class UserAuthComponent implements OnInit, OnDestroy {
   public sub: Subscription;
@@ -44,7 +42,6 @@ export class UserAuthComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute,
     private notify: NotifyService,
     public translate: TranslateService
     ) {}
@@ -58,7 +55,7 @@ export class UserAuthComponent implements OnInit, OnDestroy {
         res => {
           localStorage.setItem('token', res.token);
           const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '';
-          this.authService.change.emit(this.authService.isLoggedIn());
+          this.authService.change.emit('login');
           this.router.navigate([redirect]);
         },
         error => {
