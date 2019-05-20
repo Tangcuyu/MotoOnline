@@ -40,6 +40,6 @@ export class ProductItemsService {
 
   // 获取所有产品列表
   getProductList(): Observable<Array<ItemsListItem>> {
-    return 
+    return ;
   }
 }
