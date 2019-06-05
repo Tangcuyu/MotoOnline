@@ -4,6 +4,21 @@
 		"subhead": "一切为了自由™",
 		"subject": "哈雷在线"
 	},
+	"order": {
+		"title": "订单详细信息",
+		"address": {
+			"title": "收货人信息",
+			"declarer": "请仔细填写和检查收货人地址信息和联系方式",
+			"name": "姓名",
+			"address": "收货详细地址",
+			"tip": "仔细检查收货地址",
+			"phone": "联系电话",
+			"btnChangeAddress": "新增收货地址"
+		},
+		"payment": {
+			"title": "支付方式"
+		}
+	},
 	"login": {
 		"emailEnterErr": "请输入邮箱地址",
 		"emailPlaceholder": "邮箱地址",

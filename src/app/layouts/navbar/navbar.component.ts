@@ -7,8 +7,7 @@ import { MenuItemsService } from '../../providers/menu-items.service';
 
 // 测试翻译模块功能
 import { _ } from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
-import { Subscribable, Subscriber, Subscription } from 'rxjs';
-import { TouchSequence } from 'selenium-webdriver';
+import { Subscription } from 'rxjs';
 
 
 @Component({
