@@ -16,7 +16,15 @@
 			"btnChangeAddress": "新增收货地址"
 		},
 		"payment": {
-			"title": "支付方式"
+			"title": "支付方式",
+			"method1": "货到付款",
+			"method2": "在线支付"
+		},
+		"package": {
+			"title": "送货清单",
+			"method": "配送方式",
+			"express": "快递运输",
+			"postal": "邮政"
 		}
 	},
 	"login": {

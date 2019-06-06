@@ -34,15 +34,21 @@
                   <label for="phone" class="bmd-label-floating">{{'order.address.phone' | translate}}</label>
                   <input type="text" class="form-control" id="phone">
                 </div>
-                <div class="submit text-center">
-                  
+                <div class="form-group">
+                  <input type="submit" class="btn btn-primary btn-raised btn-round"
+                    value="{{'order.address.btnChangeAddress' | translate}}">
                 </div>
                 <h2 class="title">{{'order.payment.title' | translate}}</h2>
+                <div class="bmd-form-group">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1">{{'order.payment.method1' | translate}}</mat-radio-button>
+                    <mat-radio-button value="2">{{'order.payment.method2' | translate}}</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                <h2 class="title">{{'order.package.title' | translate}}</h2>
               </form>
             </div>
             <div class="col-md-6">
-              <input type="submit" class="btn btn-primary btn-raised btn-round"
-                value="{{'order.address.btnChangeAddress' | translate}}">
             </div>
           </div>
         </div>
