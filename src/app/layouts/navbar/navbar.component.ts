@@ -1,15 +1,10 @@
-import { Component, Injectable, EventEmitter, Output, OnChanges, OnDestroy, OnInit } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { Component, EventEmitter, Injectable, Output, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { AuthService } from '../../providers/auth.service';
 import { CartService } from '../../providers/cart.service';
 import { IMenuItem } from '../../models/model';
-import { AuthService } from '../../providers/auth.service';
 import { MenuItemsService } from '../../providers/menu-items.service';
-
-// 测试翻译模块功能
-import { _ } from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
-import { Subscribable, Subscriber, Subscription } from 'rxjs';
-import { TouchSequence } from 'selenium-webdriver';
-
 
 @Component({
   selector: 'app-navbar-component',
@@ -19,7 +14,7 @@ import { TouchSequence } from 'selenium-webdriver';
 
 
 @Injectable()
-export class NavbarComponent implements  OnDestroy {
+export class NavbarComponent implements OnDestroy {
   // Public properites
   items = 0;
   @Output() langChange: EventEmitter<string> = new EventEmitter<string>();
@@ -38,7 +33,6 @@ export class NavbarComponent implements  OnDestroy {
     private cartService: CartService,
     private authService: AuthService,
     private menuitemService: MenuItemsService) {
-
     this.isLoggedIn = this.authService.isLoggedIn() ? 'login' : 'logout';
     this.sub = this.menuitemService.getMenuItems(this.isLoggedIn)
       .subscribe(
@@ -64,16 +58,16 @@ export class NavbarComponent implements  OnDestroy {
     // 响应登录和退出登录事件
     this.sub = this.authService.change.subscribe((value) => {
       this.menuitemService.getMenuItems(value)
-      .subscribe(
-        (data) => {
-          this.menuItems = [...data];
-        },
-        err => {
-          console.log(`error : ${err.message}`);
-        },
-        () => {
-        }
-      );
+        .subscribe(
+          (data) => {
+            this.menuItems = [...data];
+          },
+          err => {
+            console.log(`error : ${err.message}`);
+          },
+          () => {
+          }
+        );
     });
   }
 

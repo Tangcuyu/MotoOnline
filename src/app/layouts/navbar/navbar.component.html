@@ -1,7 +1,6 @@
 <nav class="navbar navbar-color-on-scroll fixed-top navbar-expand-lg navbar-transparent" color-on-scroll="100"
     id="sectionsNav">
     <div class="container">
-       
         <div class="navbar-translate">
             <a class="navbar-brand" href="#">{{'navbar.logoTitle' | translate}} </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
@@ -15,8 +14,8 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="dropdown nav-item" *ngFor="let menuitem of menuItems; let i = index">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <i class="material-icons"></i> {{ menuitem.translateKey | translate: {'username': menuitem.buttonName}  }}
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" style="text-transform:capitalize">
+                        <i class="material-icons"></i> {{ menuitem.translateKey | translate: {'username': menuitem.buttonName} }}
                     </a>
                     <div class="dropdown-menu dropdown-with-icons">
                        <div *ngFor="let subitem of menuitem.subItems;">

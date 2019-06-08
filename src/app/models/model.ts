@@ -40,6 +40,7 @@ export class AppConst {
         getMenuItems: '/api/menuitems',
         getItems: '/api/newModelItems',
         itemDescription: '/api/newModelItems/{{id}}',
+        getProducts: '/api/productlist',
         buyItems: '/people',
         verfiyVoucher: '/people'
     };

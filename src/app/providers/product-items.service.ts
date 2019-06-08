@@ -40,6 +40,13 @@ export class ProductItemsService {
 
   // 获取所有产品列表
   getProductList(): Observable<Array<ItemsListItem>> {
-    return ;
+    const productsListUrl: string = this.storeApiPath + AppConst.STORE_API_PATHS.getProducts;
+    return this.apiProvider.httpGet(productsListUrl)
+      .pipe(
+        map((res: any) => {
+          if (res) {
+            return res;
+          }
+        }));
   }
 }

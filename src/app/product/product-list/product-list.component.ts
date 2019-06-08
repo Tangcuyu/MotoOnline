@@ -16,15 +16,16 @@ export class ProductListComponent implements OnInit {
   constructor(private productlist: ProductItemsService) { }
 
   ngOnInit() {
-    /* this.isLoading = true;
+    this.isLoading = true;
     this.productlist.getProductList()
       .subscribe(productList => {
         this.productList = productList;
+        console.log(this.productList);
         this.isLoading = false;
       }, err => {
         this.isLoading = false;
         this.isError = true;
-      }); */
+      });
   }
 
 }

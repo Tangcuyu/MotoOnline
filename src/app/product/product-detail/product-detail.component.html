@@ -10,21 +10,21 @@
 <div class="container product-page sidebar-collapse" style="background-color: rgba(0,0,0,0);">
   <div class="main main-raised main-product" *ngIf="!loading">
     <div class="row">
-      <div class="col-md-6 col-sm-6">
+      <div class="col-md-7 col-sm-7">
         <div  class="tab-content">
           <div *ngFor="let image of item.images; let i=index" class="tab-pane" [class.active]="i===0" id= "{{image.public_id}}">
             <img src= "{{image.url}}">
           </div>
         </div>
         <ul class="nav flexi-nav" data-tabs="tabs" id="flexiselDemo1">
-            <li *ngFor="let image of item.images" class="nav-item" style="width: 125px;">
+            <li *ngFor="let image of item.images" class="nav-item">
               <a href="#{{image.public_id}}" class="nav-link" data-toggle="tab">
                 <img src="{{image.url}}">
               </a>
             </li>
         </ul>
       </div>
-      <div class="col-md-6 col-sm-6">
+      <div class="col-md-5 col-sm-5">
         <h2 class="title"> {{item.title}} </h2>
         <h3 class="main-price">{{item.selling_price | currency:'CNY':'symbol-narrow'}}</h3>
         <div id="accordion" role="tablist">

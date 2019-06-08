@@ -1,4 +1,4 @@
-import { Component, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Output, OnInit, OnChanges, EventEmitter } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
@@ -16,7 +16,7 @@ declare var $: any;
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, OnChanges {
   @Output()
   additem: EventEmitter<number>
         = new EventEmitter<number>();
@@ -32,7 +32,9 @@ export class ProductDetailComponent implements OnInit {
     private itemService: ProductItemsService,
     private cartService: CartService,
     private snackBar: MatSnackBar,
-    ) {}
+    ) {
+      this.initFlexisel();
+    }
 
   ngOnInit() {
     this.initFlexisel();
@@ -48,29 +50,13 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
+  ngOnChanges() {
+    // this.initFlexisel();
+  }
   // 产品图片轮播初始化
   initFlexisel() {
     $(document).ready(function() {
-        $('#flexiselDemo1').flexisel({
-            visibleItems: 4,
-            itemsToScroll: 1,
-            animationSpeed: 400,
-            enableResponsiveBreakpoints: true,
-            responsiveBreakpoints: {
-                portrait: {
-                    changePoint: 480,
-                    visibleItems: 3
-                },
-                landscape: {
-                    changePoint: 640,
-                    visibleItems: 3
-                },
-                tablet: {
-                    changePoint: 768,
-                    visibleItems: 3
-                }
-            }
-        });
+        $('#flexiselDemo1').flexisel();
     });
   }
 
