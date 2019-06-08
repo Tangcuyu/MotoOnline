@@ -4,6 +4,29 @@
 		"subhead": "ALL FOR FREEDOM. FREEDOM FOR ALL.™",
 		"subject": "Harley-Davidson Online"
 	},
+	"order": {
+		"title": "Order Detail",
+		"address": {
+			"title": "Delivery",
+			"declarer": "Please check the consignee's address carefully",
+			"name": "consignee's name",
+			"address": "address",
+			"tip": "Check consignee's address again",
+			"phone": "phone",
+			"btnChangeAddress": "Add new address"
+		},
+		"payment": {
+			"title": "Payment Methods",
+			"method1": "Pay on delivery",
+			"method2": "Pay online"
+		},
+		"package": {
+			"title": "Delivery List",
+			"method": "Delivery Method",
+			"express": "Express delivery",
+			"postal": "Postal"
+		}
+	},
 	"login": {
 		"emailEnterErr": "You must enter email address",
 		"emailPlaceholder": "Engter your email*",

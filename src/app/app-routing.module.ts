@@ -1,13 +1,15 @@
+// Third party imports
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
+// Application imports
 import { AuthGuardService } from './providers/auth-guard.service';
-import { PagenotfoundComponent } from './layouts/pagenotfound/pagenotfound.component';
-import { HomeModule } from './home/home.module';
-import { LoginModule } from './login/login.module';
+import { CheckoutCartComponent } from './sales/checkout-cart/checkout-cart.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './login/logout/logout.component';
-import { HomeComponent } from './home/home.component';
-import { CheckoutCartComponent } from './sales/checkout-cart/checkout-cart.component';
+import { OrderComponent } from './order/order.component';
+import { PagenotfoundComponent } from './layouts/pagenotfound/pagenotfound.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 
 const routes: Routes = [
@@ -48,8 +50,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    HomeModule,
-    LoginModule,
     RouterModule.forRoot(
       routes,
       // { enableTracing: true }

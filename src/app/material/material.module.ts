@@ -1,33 +1,35 @@
 import { NgModule } from '@angular/core';
 import {
-  MatFormFieldModule,
   MatButtonModule,
   MatButtonToggleModule,
+  MatFormFieldModule,
   MatIconModule,
-  MatProgressBarModule,
   MatInputModule,
-  MatRippleModule,
-  MatToolbarModule,
-  MatTooltipModule,
+  MatProgressBarModule,
   MatProgressSpinnerModule,
-  MatSnackBarModule
+  MatRippleModule,
+  MatRadioModule,
+  MatSnackBarModule,
+  MatToolbarModule,
+  MatTooltipModule
 } from '@angular/material';
 
 import { MatBadgeModule } from '@angular/material/badge';
 
 const Material = [
-  MatFormFieldModule,
+  MatBadgeModule,
   MatButtonModule,
   MatButtonToggleModule,
+  MatFormFieldModule,
   MatIconModule,
-  MatProgressBarModule,
-  MatBadgeModule,
   MatInputModule,
-  MatRippleModule,
-  MatToolbarModule,
-  MatTooltipModule,
+  MatProgressBarModule,
   MatProgressSpinnerModule,
-  MatSnackBarModule
+  MatRippleModule,
+  MatRadioModule,
+  MatSnackBarModule,
+  MatToolbarModule,
+  MatTooltipModule
 ];
 @NgModule({
   imports: [

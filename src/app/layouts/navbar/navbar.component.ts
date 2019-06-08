@@ -6,6 +6,14 @@ import { CartService } from '../../providers/cart.service';
 import { IMenuItem } from '../../models/model';
 import { MenuItemsService } from '../../providers/menu-items.service';
 
+<<<<<<< HEAD
+=======
+// 测试翻译模块功能
+import { _ } from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
+import { Subscription } from 'rxjs';
+
+
+>>>>>>> 04fb3afa012edc7463fdb6274f4e106485f78caa
 @Component({
   selector: 'app-navbar-component',
   templateUrl: './navbar.component.html',
