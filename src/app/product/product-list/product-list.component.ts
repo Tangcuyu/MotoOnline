@@ -9,11 +9,13 @@ import { ProductItemsService } from '../../providers/product-items.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  private productList: Array<ItemsListItem>;
+  public productList: Array<ItemsListItem>;
   private isLoading = false;
   private isError = false;
+  p: number = 1;
+  collection: any[] = [];
 
-  constructor(private productlist: ProductItemsService) { }
+  constructor(public productlist: ProductItemsService) { }
 
   ngOnInit() {
     this.isLoading = true;

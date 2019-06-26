@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-modialog';
 import { NgModule } from '@angular/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule, Router } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 
@@ -32,6 +33,7 @@ import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-comp
   imports: [
     SharedModule,
     BrowserModule,
+    NgxPaginationModule,
     BrowserAnimationsModule,
     LayoutsModule,
     HttpClientModule,

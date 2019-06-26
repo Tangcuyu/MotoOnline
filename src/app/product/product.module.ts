@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -21,6 +22,7 @@ const components = [
   ],
   imports: [
     LayoutsModule,
+    NgxPaginationModule,
     RouterModule,
     SharedModule,
     TranslateModule
