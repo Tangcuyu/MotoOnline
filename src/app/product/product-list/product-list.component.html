@@ -9,7 +9,7 @@
         <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
           <div class="card-header card-header-image">
             <a [routerLink]="['/product-detail', product._id]">
-              <img src=""  alt="...">
+              <img src="{{product.image.url}}"  alt="...">
             </a>
           </div>
           <div class="card-body" style="height: 150px">
