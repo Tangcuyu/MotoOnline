@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { ApiProvider } from './api.service';
-import { ItemDescription } from '../models/item-description';
+import { ItemDescription } from '../models/ItemDescription';
 import { VoucherCodeResponse } from '../models/voucher-code-response';
 import { BuyParams } from '../models/buy-params';
 import { AppConst } from '../models/model';

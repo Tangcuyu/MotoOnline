@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material';
 
 import { ProductItemsService } from '../../providers/product-items.service';
 import { CartService } from '../../providers/cart.service';
-import { ItemDescription } from '../../models/item-description';
+import { ItemDescription } from '../../models/ItemDescription';
 import { AppConst } from '../../models/model';
 
 // 一定要声明 $ 符，不然编译会报错，

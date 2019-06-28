@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 import { ApiProvider } from './api.service';
 import { AppConst } from '../models/model';
 import { ItemsListItem } from '../models/items-list-item';
-import { ItemDescription } from '../models/item-description';
+import { ItemDescription } from '../models/ItemDescription';
 
 @Injectable({
   providedIn: 'root'

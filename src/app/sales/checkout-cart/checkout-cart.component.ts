@@ -3,7 +3,7 @@ import { AppConst } from '../../models/model';
 import { CartService } from '../../providers/cart.service';
 import { MatSnackBar } from '@angular/material';
 import { VoucherCodeResponse } from '../../models/voucher-code-response';
-import { ItemDescription } from '../../models/item-description';
+import { ItemDescription } from '../../models/ItemDescription';
 import { Modal } from 'ngx-modialog/plugins/bootstrap';
 import { NotifyService } from '../../providers/notify.service';
 import { INotifyConifg } from '../../models/model';
